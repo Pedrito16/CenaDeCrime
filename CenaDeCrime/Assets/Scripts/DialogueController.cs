@@ -13,10 +13,18 @@ public class DialogueController : MonoBehaviour
     [SerializeField] float typeWritterSpeed = 0.05f;
     void Awake()
     {
+        dialogueText.text = "";
+        npcNameText.text = "";
+
         GameManager.instance.dialogueController = this;
+        SetActive(false);
     }
-    public void WriteDialogue(string text)
+    public void WriteDialogue(string text, string npcName = "")
     {
+        dialogueText.text = "";
+        npcNameText.text = npcName;
+
+        SetActive(true);
         if (useTypeWritter)
             StartCoroutine(TypeWritter(text));
         else

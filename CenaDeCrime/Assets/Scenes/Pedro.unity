@@ -495,6 +495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 559393199}
+  - component: {fileID: 559393200}
   m_Layer: 5
   m_Name: NPCController
   m_TagString: Untagged
@@ -521,6 +522,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &559393200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559393198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc137c6f8d7dc54b8c558213d062670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueController
+  npcNameText: {fileID: 2075288860}
+  dialogueText: {fileID: 1309341350}
+  useTypeWritter: 1
+  typeWritterSpeed: 0.05
 --- !u!1 &716435440
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,6 +875,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 708ab33a-b8a0-4a5b-b91f-c04d2a92be9f
     m_ActionName: 'Player/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1695305064}
+        m_TargetAssemblyTypeName: InteractRaycast, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b1511e0f-f46e-4457-b13c-9240d3159ec9
+    m_ActionName: 'Player/Interact[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1198,7 +1231,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 40}
+  m_AnchoredPosition: {x: 0, y: 60.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1309341350
@@ -1248,8 +1281,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 27.13
+  m_fontSizeBase: 27.13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1614,7 +1647,7 @@ GameObject:
   - component: {fileID: 1555103877}
   - component: {fileID: 1555103876}
   - component: {fileID: 1555103880}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Senhor Torre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1733,11 +1766,15 @@ MonoBehaviour:
   dialogues:
   - dialogueName: "Introdu\xE7\xE3o"
     npcName: Senhor Torre
-    dialogues:
-    - "Ol\xE1, sou uma torre"
-    - Porque eu sou uma torre?
-    - Porque eu existo?
+    lines:
+    - "Ol\xE1 eu sou o senhor torre"
+    - porque existo?
+    - "Corrente el\xE9trica \xE9 o fluxo ordenado de part\xEDculas carregadas (geralmente
+      el\xE9trons) que atravessa um material condutor, como fios de cobre, quando
+      h\xE1 uma diferen\xE7a de potencial el\xE9trico (tens\xE3o).\n"
+  loopDialogueOnEnd: 1
   dialogueIndex: 0
+  currentLineIndex: 0
 --- !u!1 &1567788225
 GameObject:
   m_ObjectHideFlags: 0

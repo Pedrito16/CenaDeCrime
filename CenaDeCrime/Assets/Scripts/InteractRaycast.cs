@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class InteractRaycast : MonoBehaviour
 {
     [SerializeField] float interactDistance = 3f;
@@ -40,6 +40,16 @@ public class InteractRaycast : MonoBehaviour
                 lastInteractable.OnRaycastExit();
                 lastInteractable = null;
                 enteredRaycast = false;
+            }
+        }
+    }
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            if (lastInteractable != null)
+            {
+                lastInteractable.Interact();
             }
         }
     }
