@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using Unity.VisualScripting;
 public class DialogueController : MonoBehaviour
 {
     [Header("Texts")]
@@ -11,6 +10,11 @@ public class DialogueController : MonoBehaviour
     [Header("TypeWritter")]
     [SerializeField] bool useTypeWritter = true;
     [SerializeField] float typeWritterSpeed = 0.05f;
+
+    [Header("Debug")]
+    public bool isOnDialogue;
+    string lastText;
+    Coroutine typeWritterRoutine;
     void Awake()
     {
         dialogueText.text = "";
@@ -25,10 +29,34 @@ public class DialogueController : MonoBehaviour
         npcNameText.text = npcName;
 
         SetActive(true);
+
         if (useTypeWritter)
-            StartCoroutine(TypeWritter(text));
+        {
+            if (useTypeWritter && isOnDialogue)
+            {
+                ResetText();
+                return;
+            }
+
+            isOnDialogue = true;
+            lastText = text;
+
+            typeWritterRoutine = StartCoroutine(TypeWritter(text));
+        }
         else
             dialogueText.text = text;
+    }
+    void ResetText()
+    {
+        if(typeWritterRoutine != null)
+            StopCoroutine(typeWritterRoutine);
+
+        isOnDialogue = false;
+
+        dialogueText.text = "";
+        dialogueText.text = lastText;
+
+        typeWritterRoutine = null;
     }
     public void SetActive(bool active)
     {
@@ -38,7 +66,8 @@ public class DialogueController : MonoBehaviour
     IEnumerator TypeWritter(string text)
     {
         char[] characters = text.ToCharArray();
-        for(int i = 0; i < characters.Length; i++)
+        lastText = text;
+        for (int i = 0; i < characters.Length; i++)
         {
             dialogueText.text += characters[i];
             yield return new WaitForSeconds(typeWritterSpeed);

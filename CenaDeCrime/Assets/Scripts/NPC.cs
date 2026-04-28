@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 [System.Serializable]
 public class Dialogue
@@ -17,6 +18,7 @@ public class NPC : Interactable
     [Header("Debug")]
     [SerializeField] int dialogueIndex;
     [SerializeField] int currentLineIndex;
+    [SerializeField] bool isOnDialogue;
     DialogueController dialogueController;
     protected override void Start()
     {
@@ -32,21 +34,26 @@ public class NPC : Interactable
     void WriteLine()
     {
         Dialogue currentDialogue = dialogues[dialogueIndex];
-        if (currentLineIndex < currentDialogue.lines.Length)
+        string[] currentLines = currentDialogue.lines;
+        if (currentLineIndex < currentLines.Length)
         {
-            dialogueController.WriteDialogue(currentDialogue.lines[currentLineIndex], currentDialogue.npcName);
-            currentLineIndex++;
+            dialogueController.WriteDialogue(currentLines[currentLineIndex], currentDialogue.npcName);
+            if(!dialogueController.isOnDialogue)
+                currentLineIndex++;
         }
         else
-        {
-            dialogueIndex++;
+            EndDialogue();
+    }
+    void EndDialogue()
+    {
+        dialogueIndex++;
 
-            if (loopDialogueOnEnd && dialogueIndex >= dialogues.Length)
-                dialogueIndex = 0;
+        if (loopDialogueOnEnd && dialogueIndex >= dialogues.Length) //para loopar dialogo
+            dialogueIndex = 0;
 
-            dialogueController.SetActive(false);
-            currentLineIndex = 0;
-        }
+        dialogueController.SetActive(false);
+        currentLineIndex = 0;
+        isOnDialogue = false;
     }
     #region OnRaycast
     public override void OnRaycastEnter()
@@ -56,6 +63,7 @@ public class NPC : Interactable
     public override void OnRaycastExit()
     {
         base.OnRaycastExit();
+        EndDialogue();
     }
     #endregion
 }
