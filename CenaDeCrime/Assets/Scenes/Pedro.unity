@@ -347,7 +347,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e6e7241a83f9f274580d02d333194b05, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2182,6 +2182,7 @@ MonoBehaviour:
   frontObjectTest: {fileID: 73273761}
   inventoryObjects:
   - {fileID: 1527372858673578266, guid: edfe476404d6bfe43af2f235ce88f6a9, type: 3}
+  currentIndex: 0
 --- !u!1 &1519219506
 GameObject:
   m_ObjectHideFlags: 0
