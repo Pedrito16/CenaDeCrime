@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 73273762}
   - component: {fileID: 73273765}
   - component: {fileID: 73273764}
+  - component: {fileID: 73273766}
   m_Layer: 6
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -315,12 +316,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73273761}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1418900949}
+  m_Father: {fileID: 307532882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &73273764
 MeshRenderer:
@@ -378,6 +379,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73273761}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &73273766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73273761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1790b0221f95a4184d4dc29acc9b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryItem
 --- !u!1 &92417658
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +857,60 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 72588148}
+--- !u!1 &307532881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 307532882}
+  - component: {fileID: 307532883}
+  m_Layer: 0
+  m_Name: InventoryController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &307532882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307532881}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1227991753}
+  - {fileID: 1519219507}
+  - {fileID: 73273762}
+  m_Father: {fileID: 1418900949}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &307532883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307532881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f983a2dd43505a45bf8a71d0b26e2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryController
+  amountToMove: 2
+  frontObjectTest: {fileID: 73273761}
+  inventoryItems:
+  - {fileID: 1227991757}
+  - {fileID: 1519219511}
+  - {fileID: 73273766}
+  currentIndex: 0
 --- !u!1 &507959006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,6 +1769,7 @@ GameObject:
   - component: {fileID: 1227991753}
   - component: {fileID: 1227991756}
   - component: {fileID: 1227991755}
+  - component: {fileID: 1227991757}
   m_Layer: 6
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -1717,12 +1785,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227991752}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1418900949}
+  m_Father: {fileID: 307532882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1227991755
 MeshRenderer:
@@ -1780,6 +1848,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227991752}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1227991757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227991752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1790b0221f95a4184d4dc29acc9b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryItem
 --- !u!1 &1258087080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,7 +2280,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1418900949}
-  - component: {fileID: 1418900950}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -2221,28 +2300,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1227991753}
-  - {fileID: 1519219507}
-  - {fileID: 73273762}
+  - {fileID: 307532882}
   - {fileID: 507959007}
   - {fileID: 92417659}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1418900950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418900948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f983a2dd43505a45bf8a71d0b26e2d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryController
-  frontObjectTest: {fileID: 73273761}
-  inventoryItems: []
-  currentIndex: 0
 --- !u!1 &1519219506
 GameObject:
   m_ObjectHideFlags: 0
@@ -2254,6 +2316,7 @@ GameObject:
   - component: {fileID: 1519219507}
   - component: {fileID: 1519219510}
   - component: {fileID: 1519219509}
+  - component: {fileID: 1519219511}
   m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -2269,12 +2332,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519219506}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1418900949}
+  m_Father: {fileID: 307532882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1519219509
 MeshRenderer:
@@ -2332,6 +2395,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519219506}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1519219511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519219506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1790b0221f95a4184d4dc29acc9b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryItem
 --- !u!1 &1536422956
 GameObject:
   m_ObjectHideFlags: 0
