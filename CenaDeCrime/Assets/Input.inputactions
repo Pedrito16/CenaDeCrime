@@ -61,6 +61,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "RotateInventory",
+                    "type": "Button",
+                    "id": "d3aaebc1-b153-46d3-a5b1-4d9aa6329d87",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "MoveAD",
                     "type": "Button",
                     "id": "5595f3d4-bace-4646-a4b0-3c263ea12bc2",
@@ -222,6 +231,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1546848e-0155-458a-b7e0-437817497e7d",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

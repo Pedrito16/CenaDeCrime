@@ -33,6 +33,12 @@ public class InventoryController : MonoBehaviour
             inventoryItems[i].MoveToNext(direction * -1, amountToMove, i == currentIndex);
         }
     }
+    IEnumerator WaitAnimationEnd()
+    {
+        yield return new WaitForSeconds(animationTime);
+        inventoryCanvas.SetActive(isActivated);
+    }
+    #region Inputs
     public void ActivateInventory(InputAction.CallbackContext context)
     {
         if(context.started)
@@ -52,14 +58,23 @@ public class InventoryController : MonoBehaviour
         {
             int direction = (int)context.ReadValue<float>();
             int newIndex = currentIndex + direction;
+
             if (newIndex < 0 || newIndex > inventoryItems.Length - 1) return;
+
             Move(direction);
         }
     }
-    IEnumerator WaitAnimationEnd()
+    public void RotateItem(InputAction.CallbackContext context)
     {
-        yield return new WaitForSeconds(animationTime);
-        inventoryCanvas.SetActive(isActivated);
+        if (!isActivated) return;
+        if (context.started)
+        {
+            for(int i = 0; i < inventoryItems.Length; i++)
+            {
+                if (i == currentIndex) continue;
+                inventoryItems[i].MoveDownwards();
+            }
+        }
     }
-
+    #endregion
 }
