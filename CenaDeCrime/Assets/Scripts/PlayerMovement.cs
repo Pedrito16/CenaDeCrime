@@ -56,10 +56,11 @@ public class PlayerMoviment : MonoBehaviour
     Rigidbody rb;
     private void Awake()
     {
-
+        GameManager.instance.playerMovement = this;
     }
     void Start()
     {
+        
         rb = GetComponent<Rigidbody>();
 
         currentStamina = maxStamina;
@@ -142,6 +143,7 @@ public class PlayerMoviment : MonoBehaviour
     }
     void MoveCam()
     {
+        if(!canMoveCam) return;
         float camInputY;
         float camInputX;
 

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.InputSystem;
-using UnityEditor.Experimental.GraphView;
 public class InventoryController : MonoBehaviour
 {
     [Header("References")]
@@ -14,10 +13,15 @@ public class InventoryController : MonoBehaviour
     [SerializeField] float amountToMove;
     [SerializeField] InventoryItem[] inventoryItems;
 
+    [Header("Rotate mode")]
+    [SerializeField] float rotationSpeed;
+    [SerializeField] int rotationDirection;
     [Header("Debug")]
     [SerializeField] int currentIndex;
     [SerializeField] bool isActivated;
     [SerializeField] bool isOnRotateMode;
+    [SerializeField] bool isRotating;
+    
     Coroutine animationRoutine;
     void Start()
     {
@@ -34,6 +38,16 @@ public class InventoryController : MonoBehaviour
             inventoryItems[i].MoveToNext(direction * -1, amountToMove, i == currentIndex);
         }
     }
+    private void Update()
+    {
+        if(!isActivated && !isOnRotateMode) return;
+
+        if (isRotating)
+        {
+            Transform selectedItem = inventoryItems[currentIndex].transform;
+            selectedItem.Rotate(Vector3.up * rotationDirection * rotationSpeed * Time.deltaTime);
+        }
+    }
     IEnumerator WaitAnimationEnd()
     {
         yield return new WaitForSeconds(animationTime);
@@ -44,40 +58,59 @@ public class InventoryController : MonoBehaviour
     {
         if(context.started)
         {
-            if(animationRoutine != null) StopCoroutine(animationRoutine);
+            if (animationRoutine != null) StopCoroutine(animationRoutine);
             inventoryCanvas.SetActive(true);
 
-            isActivated = !isActivated;   
+            isActivated = !isActivated;
+
+            PlayerMoviment playerMovement = GameManager.instance.playerMovement;
+            playerMovement.canMove = !isActivated;
+            playerMovement.canMoveCam = !isActivated;
+
             inventoryAnimator.SetBool("IsActivated", isActivated);
             animationRoutine = StartCoroutine(WaitAnimationEnd());
         }
-    } 
+    }
     public void MoveInventory(InputAction.CallbackContext context)
     {
         if (!isActivated) return;
+
+        int direction = (int)context.ReadValue<float>();
+
         if (context.started && !isOnRotateMode)
         {
-            int direction = (int)context.ReadValue<float>();
             int newIndex = currentIndex + direction;
 
             if (newIndex < 0 || newIndex > inventoryItems.Length - 1) return;
 
             Move(direction);
         }
-        if (context.performed && isOnRotateMode)
-        {
-            
-        }
     }
     public void RotateItem(InputAction.CallbackContext context)
+    {
+        if (!isActivated && !isOnRotateMode) return;
+        if(context.started)
+        {
+            rotationDirection = (int)context.ReadValue<float>();
+            isRotating = true;
+        }
+        if (context.canceled)
+        {
+            rotationDirection = 0;
+            isRotating = false;
+        }
+    }
+    public void ToggleRotateMode(InputAction.CallbackContext context)
     {
         if (!isActivated) return;
         if (context.started)
         {
-            for(int i = 0; i < inventoryItems.Length; i++)
+            isOnRotateMode = !isOnRotateMode;
+
+            for (int i = 0; i < inventoryItems.Length; i++)
             {
                 if (i == currentIndex) continue;
-                inventoryItems[i].MoveDownwards();
+                inventoryItems[i].MoveDownwards(isOnRotateMode);
             }
         }
     }

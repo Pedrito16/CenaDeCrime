@@ -952,8 +952,12 @@ MonoBehaviour:
   - {fileID: 73273766}
   - {fileID: 1519219511}
   - {fileID: 1130272238}
+  rotationSpeed: 100
+  rotationDirection: 0
   currentIndex: 1
   isActivated: 0
+  isOnRotateMode: 0
+  isRotating: 0
 --- !u!1 &507959006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,13 +1746,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 307532883}
+        m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+        m_MethodName: RotateItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5595f3d4-bace-4646-a4b0-3c263ea12bc2
     m_ActionName: 'Player/MoveAD[/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 307532883}
         m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-        m_MethodName: RotateItem
+        m_MethodName: ToggleRotateMode
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2835,6 +2851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de655ab55e89447469b919c40ba695fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  playerMovement: {fileID: 0}
   dialogueController: {fileID: 0}
   interactUI: {fileID: 0}
 --- !u!4 &1536422958
