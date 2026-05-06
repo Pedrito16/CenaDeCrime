@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEditor.Experimental.GraphView;
 public class InventoryController : MonoBehaviour
 {
     [Header("References")]
@@ -32,11 +33,6 @@ public class InventoryController : MonoBehaviour
             inventoryItems[i].MoveToNext(direction * -1, amountToMove, i == currentIndex);
         }
     }
-    [ContextMenu("Move Left")]
-    public void MoveLeft()
-    {
-        Move(-1);
-    }
     public void ActivateInventory(InputAction.CallbackContext context)
     {
         if(context.started)
@@ -46,7 +42,6 @@ public class InventoryController : MonoBehaviour
 
             isActivated = !isActivated;   
             inventoryAnimator.SetBool("IsActivated", isActivated);
-            print("Activated");
             animationRoutine = StartCoroutine(WaitAnimationEnd());
         }
     } 
@@ -56,6 +51,8 @@ public class InventoryController : MonoBehaviour
         if (context.started)
         {
             int direction = (int)context.ReadValue<float>();
+            int newIndex = currentIndex + direction;
+            if (newIndex < 0 || newIndex > inventoryItems.Length - 1) return;
             Move(direction);
         }
     }
@@ -64,8 +61,5 @@ public class InventoryController : MonoBehaviour
         yield return new WaitForSeconds(animationTime);
         inventoryCanvas.SetActive(isActivated);
     }
-    int DistanceFromIndex(int index)
-    {
-        return Mathf.Abs(currentIndex - index);
-    }
+
 }
