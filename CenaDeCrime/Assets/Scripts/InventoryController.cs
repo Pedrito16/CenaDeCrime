@@ -17,6 +17,7 @@ public class InventoryController : MonoBehaviour
     [Header("Debug")]
     [SerializeField] int currentIndex;
     [SerializeField] bool isActivated;
+    [SerializeField] bool isOnRotateMode;
     Coroutine animationRoutine;
     void Start()
     {
@@ -54,7 +55,7 @@ public class InventoryController : MonoBehaviour
     public void MoveInventory(InputAction.CallbackContext context)
     {
         if (!isActivated) return;
-        if (context.started)
+        if (context.started && !isOnRotateMode)
         {
             int direction = (int)context.ReadValue<float>();
             int newIndex = currentIndex + direction;
@@ -62,6 +63,10 @@ public class InventoryController : MonoBehaviour
             if (newIndex < 0 || newIndex > inventoryItems.Length - 1) return;
 
             Move(direction);
+        }
+        if (context.performed && isOnRotateMode)
+        {
+            
         }
     }
     public void RotateItem(InputAction.CallbackContext context)
