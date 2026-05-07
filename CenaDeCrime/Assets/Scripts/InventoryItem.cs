@@ -20,12 +20,16 @@ public class InventoryItem : MonoBehaviour
 
         moveTween = transform.DOLocalMove(newPos, 0.5f).SetEase(Ease.OutCubic);
     }
+    public void ResetRotation()
+    {
+        transform.DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.OutCubic);
+    }
     public void MoveDownwards(bool downWards = true)
     {
         SetActive(true);
         originalPos = transform.localPosition;
 
-        Vector3 newPos = new Vector3(transform.localPosition.x, transform.localPosition.y + (downWards ? -10 : 10), transform.localPosition.z);
+        Vector3 newPos = new Vector3(transform.localPosition.x, transform.localPosition.y + (downWards ? -5 : 5), transform.localPosition.z);
         moveTween = transform.DOLocalMove(newPos, 0.5f).SetEase(Ease.InCubic).OnComplete(() => SetActive(!downWards));
     }
     void EndTween()

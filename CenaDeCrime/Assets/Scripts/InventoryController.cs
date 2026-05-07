@@ -16,7 +16,7 @@ public class InventoryController : MonoBehaviour
 
     [Header("Rotate mode")]
     [SerializeField] float rotationSpeed;
-    [SerializeField] int rotationDirection;
+    [SerializeField] Vector2 rotationDirection;
 
     [Header("Debug")]
     [SerializeField] int currentIndex;
@@ -27,6 +27,7 @@ public class InventoryController : MonoBehaviour
     Coroutine animationRoutine;
     void Start()
     {
+        GameManager.instance.inventoryController = this;
         inventoryCanvas.SetActive(false);
     }
     public void Move(int direction)
@@ -47,7 +48,7 @@ public class InventoryController : MonoBehaviour
         if (isRotating)
         {
             Transform selectedItem = inventoryItems[currentIndex].transform;
-            selectedItem.Rotate(Vector3.up * rotationDirection * rotationSpeed * Time.deltaTime);
+            selectedItem.Rotate(rotationDirection * rotationSpeed * Time.deltaTime);
         }
     }
     IEnumerator WaitAnimationEnd()
@@ -98,15 +99,17 @@ public class InventoryController : MonoBehaviour
     public void RotateItem(InputAction.CallbackContext context)
     {
         if (!isActivated || !isOnRotateMode) return;
-        if(context.started)
+        if(context.performed)
         {
             print("rotate");
-            rotationDirection = (int)context.ReadValue<float>();
+            rotationDirection = context.ReadValue<Vector2>();
+            
             isRotating = true;
         }
         if (context.canceled)
         {
-            rotationDirection = 0;
+            print(" end rotate");
+            rotationDirection = Vector2.zero;
             isRotating = false;
         }
     }
@@ -122,7 +125,11 @@ public class InventoryController : MonoBehaviour
     void ToggleRotate()
     {
         isOnRotateMode = !isOnRotateMode;
-
+        isRotating = false;
+        if(!isOnRotateMode)
+        {
+            inventoryItems[currentIndex].ResetRotation();
+        }
         for (int i = 0; i < inventoryItems.Length; i++)
         {
             if (i == currentIndex) continue;
