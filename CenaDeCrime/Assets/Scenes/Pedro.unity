@@ -945,6 +945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryController
   inventoryAnimator: {fileID: 1389831656}
   inventoryCanvas: {fileID: 92417658}
+  itemsRawImg: {fileID: 980850985}
   animationTime: 0.5
   amountToMove: 2
   inventoryItems:
@@ -1427,7 +1428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0010013, y: -2.5899}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 716.1, y: 680.859}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &980850986

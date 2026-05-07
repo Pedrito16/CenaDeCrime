@@ -7,6 +7,7 @@ public class InventoryController : MonoBehaviour
     [Header("References")]
     [SerializeField] Animator inventoryAnimator;
     [SerializeField] GameObject inventoryCanvas;
+    [SerializeField] RectTransform itemsRawImg;
 
     [Header("Inventory Settings")]
     [SerializeField] float animationTime;
@@ -16,6 +17,7 @@ public class InventoryController : MonoBehaviour
     [Header("Rotate mode")]
     [SerializeField] float rotationSpeed;
     [SerializeField] int rotationDirection;
+
     [Header("Debug")]
     [SerializeField] int currentIndex;
     [SerializeField] bool isActivated;
@@ -51,6 +53,13 @@ public class InventoryController : MonoBehaviour
     IEnumerator WaitAnimationEnd()
     {
         yield return new WaitForSeconds(animationTime);
+
+        if (!isActivated)
+        {
+            if (isOnRotateMode) ToggleRotate();
+            itemsRawImg.anchoredPosition = Vector2.zero;
+        }
+
         inventoryCanvas.SetActive(isActivated);
     }
     #region Inputs
@@ -88,9 +97,10 @@ public class InventoryController : MonoBehaviour
     }
     public void RotateItem(InputAction.CallbackContext context)
     {
-        if (!isActivated && !isOnRotateMode) return;
+        if (!isActivated || !isOnRotateMode) return;
         if(context.started)
         {
+            print("rotate");
             rotationDirection = (int)context.ReadValue<float>();
             isRotating = true;
         }
@@ -105,14 +115,18 @@ public class InventoryController : MonoBehaviour
         if (!isActivated) return;
         if (context.started)
         {
-            isOnRotateMode = !isOnRotateMode;
-
-            for (int i = 0; i < inventoryItems.Length; i++)
-            {
-                if (i == currentIndex) continue;
-                inventoryItems[i].MoveDownwards(isOnRotateMode);
-            }
+            ToggleRotate();
         }
     }
     #endregion
+    void ToggleRotate()
+    {
+        isOnRotateMode = !isOnRotateMode;
+
+        for (int i = 0; i < inventoryItems.Length; i++)
+        {
+            if (i == currentIndex) continue;
+            inventoryItems[i].MoveDownwards(isOnRotateMode);
+        }
+    }
 }
