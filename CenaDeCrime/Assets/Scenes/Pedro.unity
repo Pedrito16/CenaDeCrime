@@ -1445,7 +1445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1811,7 +1811,7 @@ MonoBehaviour:
   canMoveCam: 1
   canMove: 1
   camLerpSmooth: 10
-  mouseSensitivity: 3
+  mouseSensitivity: 0.25
   xRotation: 0
   yRotation: 0
   isSprinting: 0
@@ -3042,6 +3042,7 @@ GameObject:
   - component: {fileID: 1584234166}
   - component: {fileID: 1584234168}
   - component: {fileID: 1584234167}
+  - component: {fileID: 1584234169}
   m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
@@ -3106,6 +3107,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584234165}
   m_CullTransparentMesh: 1
+--- !u!225 &1584234169
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584234165}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1595549002
 GameObject:
   m_ObjectHideFlags: 0

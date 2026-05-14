@@ -72,6 +72,8 @@ public class InventoryController : MonoBehaviour
             inventoryCanvas.SetActive(true);
 
             isActivated = !isActivated;
+            Cursor.lockState = isActivated ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = isActivated;
 
             PlayerMoviment playerMovement = GameManager.instance.playerMovement;
             playerMovement.canMove = !isActivated;
