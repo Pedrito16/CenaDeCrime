@@ -1,7 +1,8 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class InventoryController : MonoBehaviour
 {
     [Header("References")]
@@ -17,6 +18,8 @@ public class InventoryController : MonoBehaviour
     [Header("Rotate mode")]
     [SerializeField] float rotationSpeed;
     [SerializeField] Vector2 rotationDirection;
+    [SerializeField] UnityEvent onRotateStart;
+    [SerializeField] UnityEvent onRotateEnd;
 
     [Header("Debug")]
     [SerializeField] int currentIndex;
@@ -33,6 +36,9 @@ public class InventoryController : MonoBehaviour
     public void Move(int direction)
     {
         if (!isActivated) return;
+
+        int newIndex = currentIndex + direction;
+        if (newIndex < 0 || newIndex > inventoryItems.Length - 1) return;
 
         currentIndex += direction;
         currentIndex = Mathf.Clamp(currentIndex, 0, inventoryItems.Length - 1);
@@ -91,10 +97,6 @@ public class InventoryController : MonoBehaviour
 
         if (context.started && !isOnRotateMode)
         {
-            int newIndex = currentIndex + direction;
-
-            if (newIndex < 0 || newIndex > inventoryItems.Length - 1) return;
-
             Move(direction);
         }
     }
@@ -131,7 +133,11 @@ public class InventoryController : MonoBehaviour
         if(!isOnRotateMode)
         {
             inventoryItems[currentIndex].ResetRotation();
+            onRotateEnd.Invoke();
         }
+        else
+            onRotateStart.Invoke();
+
         for (int i = 0; i < inventoryItems.Length; i++)
         {
             if (i == currentIndex) continue;
