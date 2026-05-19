@@ -5,13 +5,17 @@ public class InventoryItem : MonoBehaviour
 {
     Tween moveTween;
     Vector3 lastPos;
-    Vector3 originalPos;
     void Start()
     {
         
     }
     public void MoveToNext(int direction, float amountXToMove, bool isSelected)
     {
+        if (direction == 0) 
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, isSelected ? -1 : 0);
+            return;
+        } 
         if(moveTween != null) EndTween();
         moveTween = null;
 
@@ -27,7 +31,6 @@ public class InventoryItem : MonoBehaviour
     public void MoveDownwards(bool downWards = true)
     {
         SetActive(true);
-        originalPos = transform.localPosition;
 
         Vector3 newPos = new Vector3(transform.localPosition.x, transform.localPosition.y + (downWards ? -5 : 5), transform.localPosition.z);
         moveTween = transform.DOLocalMove(newPos, 0.5f).SetEase(Ease.InCubic).OnComplete(() => SetActive(!downWards));

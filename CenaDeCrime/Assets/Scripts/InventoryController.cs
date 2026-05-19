@@ -1,8 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 public class InventoryController : MonoBehaviour
 {
     [Header("References")]
@@ -11,6 +11,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] RectTransform itemsRawImg;
 
     [Header("Inventory Settings")]
+    [SerializeField] float spaceBetweenItems = 2;
     [SerializeField] float animationTime;
     [SerializeField] float amountToMove;
     [SerializeField] InventoryItem[] inventoryItems;
@@ -26,12 +27,29 @@ public class InventoryController : MonoBehaviour
     [SerializeField] bool isActivated;
     [SerializeField] bool isOnRotateMode;
     [SerializeField] bool isRotating;
-    
+    InventoryAmountUI inventoryAmountUI;
     Coroutine animationRoutine;
     void Start()
     {
         GameManager.instance.inventoryController = this;
+        inventoryAmountUI = GetComponent<InventoryAmountUI>();
         inventoryCanvas.SetActive(false);
+        SortInventory();
+    }
+    public void SortInventory()
+    {
+        for (int i = 0; i < inventoryItems.Length; i++)
+        {
+            InventoryItem item = inventoryItems[i];
+            if (i == currentIndex)
+            {
+                item.transform.localPosition = Vector3.zero;
+                item.MoveToNext(0, 0, true);
+                continue;
+            }
+            item.transform.localPosition = Vector3.zero;
+            item.transform.localPosition = new Vector3(spaceBetweenItems * (i - currentIndex), 0, 0);
+        }
     }
     public void Move(int direction)
     {
@@ -42,14 +60,20 @@ public class InventoryController : MonoBehaviour
 
         currentIndex += direction;
         currentIndex = Mathf.Clamp(currentIndex, 0, inventoryItems.Length - 1);
+
+        inventoryAmountUI.SelectBall(currentIndex);
         for (int i = 0; i < inventoryItems.Length; i++)
         {
             inventoryItems[i].MoveToNext(direction * -1, amountToMove, i == currentIndex);
         }
     }
+    public void AddItem()
+    {
+        SortInventory();
+    }
     private void Update()
     {
-        if(!isActivated && !isOnRotateMode) return;
+        if (!isActivated && !isOnRotateMode) return;
 
         if (isRotating)
         {
@@ -57,22 +81,11 @@ public class InventoryController : MonoBehaviour
             selectedItem.Rotate(rotationDirection * rotationSpeed * Time.deltaTime);
         }
     }
-    IEnumerator WaitAnimationEnd()
-    {
-        yield return new WaitForSeconds(animationTime);
 
-        if (!isActivated)
-        {
-            if (isOnRotateMode) ToggleRotate();
-            itemsRawImg.anchoredPosition = Vector2.zero;
-        }
-
-        inventoryCanvas.SetActive(isActivated);
-    }
     #region Inputs
     public void ActivateInventory(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if (context.started)
         {
             if (animationRoutine != null) StopCoroutine(animationRoutine);
             inventoryCanvas.SetActive(true);
@@ -96,23 +109,19 @@ public class InventoryController : MonoBehaviour
         int direction = (int)context.ReadValue<float>();
 
         if (context.started && !isOnRotateMode)
-        {
             Move(direction);
-        }
     }
     public void RotateItem(InputAction.CallbackContext context)
     {
         if (!isActivated || !isOnRotateMode) return;
-        if(context.performed)
+        if (context.performed)
         {
-            print("rotate");
             rotationDirection = context.ReadValue<Vector2>();
-            
+
             isRotating = true;
         }
         if (context.canceled)
         {
-            print(" end rotate");
             rotationDirection = Vector2.zero;
             isRotating = false;
         }
@@ -130,7 +139,7 @@ public class InventoryController : MonoBehaviour
     {
         isOnRotateMode = !isOnRotateMode;
         isRotating = false;
-        if(!isOnRotateMode)
+        if (!isOnRotateMode)
         {
             inventoryItems[currentIndex].ResetRotation();
             onRotateEnd.Invoke();
@@ -143,5 +152,17 @@ public class InventoryController : MonoBehaviour
             if (i == currentIndex) continue;
             inventoryItems[i].MoveDownwards(isOnRotateMode);
         }
+    }
+    IEnumerator WaitAnimationEnd()
+    {
+        yield return new WaitForSeconds(animationTime);
+
+        if (!isActivated)
+        {
+            if (isOnRotateMode) ToggleRotate();
+            itemsRawImg.anchoredPosition = Vector2.zero;
+        }
+
+        inventoryCanvas.SetActive(isActivated);
     }
 }

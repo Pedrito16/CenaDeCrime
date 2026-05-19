@@ -153,12 +153,12 @@ public class PlayerMoviment : MonoBehaviour
         yRotation += camInputX;
         xRotation -= camInputY;
 
-        xRotation = Mathf.Clamp(xRotation, -50f, 50f);
+        xRotation = Mathf.Clamp(xRotation, -90, 90);
 
         xRotation = Mathf.Lerp(xRotation, xRotation, Time.deltaTime * camLerpSmooth);
         yRotation = Mathf.Lerp(yRotation, yRotation, Time.deltaTime * camLerpSmooth);
 
-        orientation.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
         playerCamera.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
     #region Inputs
