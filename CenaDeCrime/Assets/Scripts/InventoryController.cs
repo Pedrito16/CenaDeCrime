@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class InventoryController : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] Transform inventoryCam;
     [SerializeField] Animator inventoryAnimator;
     [SerializeField] GameObject inventoryCanvas;
     [SerializeField] RectTransform itemsRawImg;
@@ -16,13 +17,23 @@ public class InventoryController : MonoBehaviour
     [SerializeField] float amountToMove;
     [SerializeField] List<InventoryItem> inventoryItems;
 
+    [Header("Zoom")]
+    [SerializeField] float maxZoom;   
+    [SerializeField] float minZoom;
+    [SerializeField] float scrollSensitivity;
+
     [Header("Rotate mode")]
     [SerializeField] float rotationSpeed;
-    [SerializeField] Vector2 rotationDirection;
+    [SerializeField] Vector3 rotationDirection;
     [SerializeField] UnityEvent onRotateStart;
     [SerializeField] UnityEvent onRotateEnd;
+    float scrollRotation;
 
     [Header("Debug")]
+    [SerializeField] float currentZoom;
+    [SerializeField] float initialZoom;
+    [SerializeField] float scrollValue;
+    [SerializeField] float scrollCurrentValue01;
     [SerializeField] int currentIndex;
     [SerializeField] bool isActivated;
     [SerializeField] bool isOnRotateMode;
@@ -34,8 +45,8 @@ public class InventoryController : MonoBehaviour
         GameManager.instance.inventoryController = this;
         inventoryAmountUI = GetComponent<InventoryAmountUI>();
         inventoryCanvas.SetActive(false);
-
-        if(inventoryItems.Count == 0) return;
+        initialZoom = inventoryCam.transform.localPosition.z;
+        if (inventoryItems.Count == 0) return;
         
         for (int i = 0; i < inventoryItems.Count; i++)
         {
@@ -87,6 +98,7 @@ public class InventoryController : MonoBehaviour
     {
         if (!isActivated && !isOnRotateMode) return;
 
+
         if (isRotating)
         {
             Transform selectedItem = inventoryItems[currentIndex].transform;
@@ -128,13 +140,13 @@ public class InventoryController : MonoBehaviour
         if (!isActivated || !isOnRotateMode) return;
         if (context.performed)
         {
-            rotationDirection = context.ReadValue<Vector2>();
+            rotationDirection = context.ReadValue<Vector3>();
 
             isRotating = true;
         }
         if (context.canceled)
         {
-            rotationDirection = Vector2.zero;
+            rotationDirection = Vector3.zero;
             isRotating = false;
         }
     }
@@ -142,8 +154,17 @@ public class InventoryController : MonoBehaviour
     {
         if (!isActivated) return;
         if (context.started)
-        {
             ToggleRotate();
+    }
+    public void ScrollMouse(InputAction.CallbackContext context)
+    {
+        if (!isActivated) return;
+        if (context.performed)
+        {
+            scrollValue = context.ReadValue<float>();
+            scrollValue = Mathf.Clamp(scrollValue, -1, 1);
+            scrollCurrentValue01 = Mathf.Clamp01(scrollCurrentValue01 + scrollValue * scrollSensitivity);
+            inventoryCam.transform.localPosition = new Vector3(0, 0, Mathf.Lerp(minZoom, maxZoom, scrollCurrentValue01));
         }
     }
     #endregion
