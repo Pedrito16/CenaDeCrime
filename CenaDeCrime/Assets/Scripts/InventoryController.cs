@@ -18,6 +18,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] List<InventoryItem> inventoryItems;
 
     [Header("Zoom")]
+    [SerializeField] float zoomSmoothStep;
     [SerializeField] float maxZoom;   
     [SerializeField] float minZoom;
     [SerializeField] float scrollSensitivity;
@@ -32,8 +33,10 @@ public class InventoryController : MonoBehaviour
     [Header("Debug")]
     [SerializeField] float currentZoom;
     [SerializeField] float initialZoom;
+    [SerializeField] float currentZoom01;
     [SerializeField] float scrollValue;
-    [SerializeField] float scrollCurrentValue01;
+    [SerializeField] float targetZoom01;
+
     [SerializeField] int currentIndex;
     [SerializeField] bool isActivated;
     [SerializeField] bool isOnRotateMode;
@@ -98,11 +101,14 @@ public class InventoryController : MonoBehaviour
     {
         if (!isActivated && !isOnRotateMode) return;
 
+        currentZoom01 = Mathf.Lerp(currentZoom01, targetZoom01, Time.deltaTime * zoomSmoothStep);
+        float z = Mathf.Lerp(maxZoom, minZoom, currentZoom01); //suavizacao de zoom
+        inventoryCam.transform.localPosition = new Vector3(0, 0, z);
 
         if (isRotating)
         {
             Transform selectedItem = inventoryItems[currentIndex].transform;
-            selectedItem.Rotate(rotationDirection * rotationSpeed * Time.deltaTime);
+            selectedItem.Rotate(rotationDirection.normalized * rotationSpeed * Time.deltaTime);
         }
     }
 
@@ -159,13 +165,12 @@ public class InventoryController : MonoBehaviour
     public void ScrollMouse(InputAction.CallbackContext context)
     {
         if (!isActivated) return;
-        if (context.performed)
-        {
-            scrollValue = context.ReadValue<float>();
-            scrollValue = Mathf.Clamp(scrollValue, -1, 1);
-            scrollCurrentValue01 = Mathf.Clamp01(scrollCurrentValue01 + scrollValue * scrollSensitivity);
-            inventoryCam.transform.localPosition = new Vector3(0, 0, Mathf.Lerp(minZoom, maxZoom, scrollCurrentValue01));
-        }
+
+        scrollValue = context.ReadValue<float>();
+        scrollValue = Mathf.Clamp(scrollValue, -1, 1);
+
+        targetZoom01 += scrollValue * scrollSensitivity;
+        targetZoom01 = Mathf.Clamp01(targetZoom01);
     }
     #endregion
     void ToggleRotate()
@@ -174,6 +179,7 @@ public class InventoryController : MonoBehaviour
         isRotating = false;
         if (!isOnRotateMode)
         {
+            inventoryCam.localPosition = new Vector3(0, 0, initialZoom);
             inventoryItems[currentIndex].ResetRotation();
             onRotateEnd.Invoke();
         }
