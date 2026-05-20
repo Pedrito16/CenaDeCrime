@@ -41,6 +41,7 @@ public class InventoryController : MonoBehaviour
         for (int i = 0; i < inventoryItems.Length; i++)
         {
             InventoryItem item = inventoryItems[i];
+            inventoryAmountUI.SpawnBall();
             if (i == currentIndex)
             {
                 item.transform.localPosition = Vector3.zero;
