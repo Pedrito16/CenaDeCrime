@@ -22,7 +22,7 @@ public class InventoryAmountUI : MonoBehaviour
         if(canvasGroup != null)
             ballsSelection.Add(canvasGroup);
 
-        canvasGroup.alpha = 0.5f;
+        canvasGroup.alpha = 0.25f;
     }
     public void SelectBall(int index)
     {
@@ -31,7 +31,7 @@ public class InventoryAmountUI : MonoBehaviour
             if(i == index)
                 ballsSelection[i].alpha = 1f;
             else
-                ballsSelection[i].alpha = 0.5f;
+                ballsSelection[i].alpha = 0.25f;
         }
     }
 }

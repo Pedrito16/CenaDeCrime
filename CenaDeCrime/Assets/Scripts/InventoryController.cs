@@ -14,7 +14,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] float spaceBetweenItems = 2;
     [SerializeField] float animationTime;
     [SerializeField] float amountToMove;
-    [SerializeField] InventoryItem[] inventoryItems;
+    [SerializeField] List<InventoryItem> inventoryItems;
 
     [Header("Rotate mode")]
     [SerializeField] float rotationSpeed;
@@ -34,14 +34,22 @@ public class InventoryController : MonoBehaviour
         GameManager.instance.inventoryController = this;
         inventoryAmountUI = GetComponent<InventoryAmountUI>();
         inventoryCanvas.SetActive(false);
+
+        if(inventoryItems.Count == 0) return;
+        
+        for (int i = 0; i < inventoryItems.Count; i++)
+        {
+            inventoryAmountUI.SpawnBall();
+        }
+
         SortInventory();
     }
     public void SortInventory()
     {
-        for (int i = 0; i < inventoryItems.Length; i++)
+        for (int i = 0; i < inventoryItems.Count; i++)
         {
             InventoryItem item = inventoryItems[i];
-            inventoryAmountUI.SpawnBall();
+            
             if (i == currentIndex)
             {
                 item.transform.localPosition = Vector3.zero;
@@ -57,19 +65,22 @@ public class InventoryController : MonoBehaviour
         if (!isActivated) return;
 
         int newIndex = currentIndex + direction;
-        if (newIndex < 0 || newIndex > inventoryItems.Length - 1) return;
+        if (newIndex < 0 || newIndex > inventoryItems.Count - 1) return;
 
         currentIndex += direction;
-        currentIndex = Mathf.Clamp(currentIndex, 0, inventoryItems.Length - 1);
+        currentIndex = Mathf.Clamp(currentIndex, 0, inventoryItems.Count - 1);
 
         inventoryAmountUI.SelectBall(currentIndex);
-        for (int i = 0; i < inventoryItems.Length; i++)
+        for (int i = 0; i < inventoryItems.Count; i++)
         {
             inventoryItems[i].MoveToNext(direction * -1, amountToMove, i == currentIndex);
         }
     }
-    public void AddItem()
+    public void AddItem(InventoryItem newItem)
     {
+        inventoryAmountUI.SpawnBall();
+        inventoryItems.Add(newItem);
+        newItem.transform.SetParent(transform);
         SortInventory();
     }
     private void Update()
@@ -148,7 +159,7 @@ public class InventoryController : MonoBehaviour
         else
             onRotateStart.Invoke();
 
-        for (int i = 0; i < inventoryItems.Length; i++)
+        for (int i = 0; i < inventoryItems.Count; i++)
         {
             if (i == currentIndex) continue;
             inventoryItems[i].MoveDownwards(isOnRotateMode);

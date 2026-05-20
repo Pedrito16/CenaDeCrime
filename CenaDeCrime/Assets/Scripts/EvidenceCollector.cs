@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class EvidenceCollector : Interactable
 {
+    [SerializeField] InventoryItem itemScript;
     protected override void Start()
     {
+        itemScript = GetComponent<InventoryItem>();
         base.Start();
+        itemScript.enabled = false;
     }
     public override void Interact()
     {
+        itemScript.enabled = true;
         gameObject.layer = LayerMask.NameToLayer("InventoryLayer");
+        GameManager.instance.inventoryController.AddItem(itemScript);
     }
     public override void OnRaycastEnter()
     {
