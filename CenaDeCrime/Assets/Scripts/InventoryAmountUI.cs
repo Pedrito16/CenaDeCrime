@@ -7,13 +7,9 @@ public class InventoryAmountUI : MonoBehaviour
     [SerializeField] GameObject ballPrefab;
     [SerializeField] Transform ballContainer;
     [SerializeField] List<CanvasGroup> ballsSelection;
-    private void Awake()
-    {
-
-    }
     void Start()
     {
-        
+        GetComponent<InventoryController>().onRecieveIndex.AddListener(SelectBall);
     }
     public void SpawnBall()
     {

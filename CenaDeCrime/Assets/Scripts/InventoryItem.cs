@@ -3,6 +3,7 @@ using DG.Tweening;
 
 public class InventoryItem : MonoBehaviour
 {
+    public EvidenceInfoSO evidence;
     Tween moveTween;
     Vector3 lastPos;
     void Start()

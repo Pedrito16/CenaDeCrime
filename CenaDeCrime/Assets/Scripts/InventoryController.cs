@@ -12,10 +12,11 @@ public class InventoryController : MonoBehaviour
     [SerializeField] RectTransform itemsRawImg;
 
     [Header("Inventory Settings")]
+    [SerializeField] Vector3 offset;
     [SerializeField] float spaceBetweenItems = 2;
     [SerializeField] float animationTime;
     [SerializeField] float amountToMove;
-    [SerializeField] List<InventoryItem> inventoryItems;
+    public List<InventoryItem> inventoryItems;
 
     [Header("Zoom")]
     [SerializeField] float zoomSmoothStep;
@@ -28,6 +29,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] Vector3 rotationDirection;
     [SerializeField] UnityEvent onRotateStart;
     [SerializeField] UnityEvent onRotateEnd;
+    [HideInInspector] public UnityEvent<int> onRecieveIndex;
     float scrollRotation;
 
     [Header("Debug")]
@@ -48,7 +50,10 @@ public class InventoryController : MonoBehaviour
         GameManager.instance.inventoryController = this;
         inventoryAmountUI = GetComponent<InventoryAmountUI>();
         inventoryCanvas.SetActive(false);
-        initialZoom = inventoryCam.transform.localPosition.z;
+        initialZoom = inventoryCam.transform.localPosition.z + offset.z;
+
+        inventoryCam.transform.localPosition = new Vector3(offset.x, offset.y, initialZoom);
+
         if (inventoryItems.Count == 0) return;
         
         for (int i = 0; i < inventoryItems.Count; i++)
@@ -66,12 +71,12 @@ public class InventoryController : MonoBehaviour
             
             if (i == currentIndex)
             {
-                item.transform.localPosition = Vector3.zero;
+                item.transform.localPosition = offset;
                 item.MoveToNext(0, 0, true);
                 continue;
             }
-            item.transform.localPosition = Vector3.zero;
-            item.transform.localPosition = new Vector3(spaceBetweenItems * (i - currentIndex), 0, 0);
+            item.transform.localPosition = offset;
+            item.transform.localPosition = new Vector3(offset.x + spaceBetweenItems * (i - currentIndex), offset.y, offset.z);
         }
     }
     public void Move(int direction)
@@ -84,7 +89,7 @@ public class InventoryController : MonoBehaviour
         currentIndex += direction;
         currentIndex = Mathf.Clamp(currentIndex, 0, inventoryItems.Count - 1);
 
-        inventoryAmountUI.SelectBall(currentIndex);
+        onRecieveIndex?.Invoke(currentIndex);
         for (int i = 0; i < inventoryItems.Count; i++)
         {
             inventoryItems[i].MoveToNext(direction * -1, amountToMove, i == currentIndex);
@@ -103,7 +108,7 @@ public class InventoryController : MonoBehaviour
 
         currentZoom01 = Mathf.Lerp(currentZoom01, targetZoom01, Time.deltaTime * zoomSmoothStep);
         float z = Mathf.Lerp(maxZoom, minZoom, currentZoom01); //suavizacao de zoom
-        inventoryCam.transform.localPosition = new Vector3(0, 0, z);
+        inventoryCam.transform.localPosition = new Vector3(offset.x, offset.y, z);
 
         if (isRotating)
         {
@@ -179,7 +184,7 @@ public class InventoryController : MonoBehaviour
         isRotating = false;
         if (!isOnRotateMode)
         {
-            inventoryCam.localPosition = new Vector3(0, 0, initialZoom);
+            inventoryCam.localPosition = new Vector3(offset.x, offset.y, initialZoom);
             inventoryItems[currentIndex].ResetRotation();
             onRotateEnd.Invoke();
         }
