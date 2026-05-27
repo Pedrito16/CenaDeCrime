@@ -40,7 +40,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] float targetZoom01;
 
     [SerializeField] int currentIndex;
-    [SerializeField] bool isActivated;
+    public bool isActivated;
     [SerializeField] bool isOnRotateMode;
     [SerializeField] bool isRotating;
     InventoryAmountUI inventoryAmountUI;

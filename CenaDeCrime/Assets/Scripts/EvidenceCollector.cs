@@ -11,6 +11,7 @@ public class EvidenceCollector : Interactable
     }
     public override void Interact()
     {
+        if(GameManager.instance.inventoryController.isActivated) return;
         itemScript.enabled = true;
         gameObject.layer = LayerMask.NameToLayer("InventoryLayer");
         GameManager.instance.inventoryController.AddItem(itemScript);

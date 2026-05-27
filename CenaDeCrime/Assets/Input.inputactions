@@ -310,7 +310,7 @@
                 {
                     "name": "forward",
                     "id": "1b184c66-737e-414f-8878-652fc0e82ce9",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -321,7 +321,7 @@
                 {
                     "name": "backward",
                     "id": "915de5a4-128e-4bbc-9c8b-b2e8de53b759",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
