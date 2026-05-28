@@ -115,9 +115,9 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Invert: 0
-    - _MaxHeight: 0.78
+    - _MaxHeight: 1.55
     - _Metallic: 0
-    - _MinHeight: 1.04
+    - _MinHeight: 2.51
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0

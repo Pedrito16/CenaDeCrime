@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class InventoryController : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] GameObject rotationAxis;
     [SerializeField] Transform inventoryCam;
     [SerializeField] Animator inventoryAnimator;
     [SerializeField] GameObject inventoryCanvas;
@@ -43,6 +44,7 @@ public class InventoryController : MonoBehaviour
     public bool isActivated;
     [SerializeField] bool isOnRotateMode;
     [SerializeField] bool isRotating;
+
     InventoryAmountUI inventoryAmountUI;
     Coroutine animationRoutine;
     void Start()
@@ -51,6 +53,8 @@ public class InventoryController : MonoBehaviour
         inventoryAmountUI = GetComponent<InventoryAmountUI>();
         inventoryCanvas.SetActive(false);
         initialZoom = inventoryCam.transform.localPosition.z + offset.z;
+        onRotateEnd?.Invoke();
+        rotationAxis.SetActive(false);
 
         inventoryCam.transform.localPosition = new Vector3(offset.x, offset.y, initialZoom);
 
@@ -152,11 +156,13 @@ public class InventoryController : MonoBehaviour
         if (context.performed)
         {
             rotationDirection = context.ReadValue<Vector3>();
+            rotationAxis.SetActive(true);
 
             isRotating = true;
         }
         if (context.canceled)
         {
+            rotationAxis.SetActive(false);
             rotationDirection = Vector3.zero;
             isRotating = false;
         }
@@ -193,7 +199,15 @@ public class InventoryController : MonoBehaviour
 
         for (int i = 0; i < inventoryItems.Count; i++)
         {
-            if (i == currentIndex) continue;
+            if (i == currentIndex)
+            {
+                rotationAxis.transform.SetParent(inventoryItems[i].transform, true);
+
+                rotationAxis.transform.localPosition = Vector3.zero;
+                rotationAxis.transform.localRotation = Quaternion.identity;
+
+                continue;
+            }
             inventoryItems[i].MoveDownwards(isOnRotateMode);
         }
     }
