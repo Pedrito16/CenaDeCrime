@@ -5,6 +5,7 @@ public class InventoryItem : MonoBehaviour
 {
     public EvidenceInfoSO evidence;
     Tween moveTween;
+    Tween returnTween;
     Vector3 lastPos;
     void Start()
     {
@@ -16,9 +17,21 @@ public class InventoryItem : MonoBehaviour
         {
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, isSelected ? -1 : 0);
             return;
-        } 
-        if(moveTween != null) EndTween();
-        moveTween = null;
+        }
+
+        if (returnTween != null) 
+        {
+            SetActive(true);
+            EndTween(returnTween);
+            returnTween = null;
+        }
+
+        if (moveTween != null) 
+        {
+            EndTween(moveTween);
+            moveTween = null;
+        }
+        
 
         Vector3 newPos = new Vector3(transform.localPosition.x + (direction * amountXToMove), transform.localPosition.y, isSelected ? -1 : 0);
         lastPos = newPos;
@@ -32,14 +45,19 @@ public class InventoryItem : MonoBehaviour
     public void MoveDownwards(bool downWards = true)
     {
         SetActive(true);
+        if (downWards)
+        {
+            lastPos = transform.localPosition;
+        }
 
         Vector3 newPos = new Vector3(transform.localPosition.x, transform.localPosition.y + (downWards ? -5 : 5), transform.localPosition.z);
-        moveTween = transform.DOLocalMove(newPos, 0.5f).SetEase(Ease.InCubic).OnComplete(() => SetActive(!downWards));
+        returnTween = transform.DOLocalMove(newPos, 0.5f).SetEase(Ease.InCubic).OnComplete(() => SetActive(!downWards));
     }
-    void EndTween()
+    void EndTween(Tween tweenToEnd)
     {
         transform.localPosition = lastPos;
-        moveTween.Kill();
+        tweenToEnd.Kill();
+        print("matei tween");
     }
     public void SetActive(bool active)
     {

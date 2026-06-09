@@ -26,6 +26,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] float scrollSensitivity;
 
     [Header("Rotate mode")]
+    [SerializeField] float rotationCooldown = 1f;
     [SerializeField] float rotationSpeed;
     [SerializeField] Vector3 rotationDirection;
     [SerializeField] UnityEvent onRotateStart;
@@ -41,6 +42,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] float targetZoom01;
 
     [SerializeField] int currentIndex;
+    [SerializeField] bool canRotate;
     public bool isActivated;
     [SerializeField] bool isOnRotateMode;
     [SerializeField] bool isRotating;
@@ -50,8 +52,11 @@ public class InventoryController : MonoBehaviour
     void Start()
     {
         GameManager.instance.inventoryController = this;
+
         inventoryAmountUI = GetComponent<InventoryAmountUI>();
         inventoryCanvas.SetActive(false);
+
+        canRotate = true;
         initialZoom = inventoryCam.transform.localPosition.z + offset.z;
         onRotateEnd?.Invoke();
         rotationAxis.SetActive(false);
@@ -170,7 +175,7 @@ public class InventoryController : MonoBehaviour
     public void ToggleRotateMode(InputAction.CallbackContext context)
     {
         if (!isActivated) return;
-        if (context.started)
+        if (context.started && canRotate)
             ToggleRotate();
     }
     public void ScrollMouse(InputAction.CallbackContext context)
@@ -190,9 +195,11 @@ public class InventoryController : MonoBehaviour
         isRotating = false;
         if (!isOnRotateMode)
         {
+            rotationAxis.SetActive(false);
             inventoryCam.localPosition = new Vector3(offset.x, offset.y, initialZoom);
             inventoryItems[currentIndex].ResetRotation();
             onRotateEnd.Invoke();
+            StartCoroutine(RotateCooldown());
         }
         else
             onRotateStart.Invoke();
@@ -210,6 +217,12 @@ public class InventoryController : MonoBehaviour
             }
             inventoryItems[i].MoveDownwards(isOnRotateMode);
         }
+    }
+    IEnumerator RotateCooldown()
+    {
+        canRotate = false;
+        yield return new WaitForSeconds(rotationCooldown);
+        canRotate = true;
     }
     IEnumerator WaitAnimationEnd()
     {

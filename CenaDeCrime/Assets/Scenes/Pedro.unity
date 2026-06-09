@@ -1301,6 +1301,7 @@ MonoBehaviour:
   maxZoom: -5.75
   minZoom: -2.25
   scrollSensitivity: 0.05
+  rotationCooldown: 1
   rotationSpeed: 100
   rotationDirection: {x: 0, y: 0, z: 0}
   onRotateStart:
@@ -1438,6 +1439,7 @@ MonoBehaviour:
   scrollValue: 0
   targetZoom01: 0
   currentIndex: 1
+  canRotate: 1
   isActivated: 0
   isOnRotateMode: 0
   isRotating: 0
