@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public DialogueController dialogueController;
     public InteractUI interactUI;
     public InventoryController inventoryController;
+    public InteractRaycast interactRaycast;
     public static GameManager instance;
     private void Awake()
     {

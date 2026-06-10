@@ -1014,11 +1014,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: c35ef3027e5da074c8b606e41a5e63fe, type: 3}
---- !u!4 &231181449 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c35ef3027e5da074c8b606e41a5e63fe, type: 3}
-  m_PrefabInstance: {fileID: 1359492091}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &268491516
 GameObject:
   m_ObjectHideFlags: 0
@@ -4010,7 +4005,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1986495881}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c35ef3027e5da074c8b606e41a5e63fe, type: 3}
       propertyPath: m_LocalScale.x
@@ -4018,23 +4013,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c35ef3027e5da074c8b606e41a5e63fe, type: 3}
       propertyPath: m_LocalScale.y
-      value: 14.250224
+      value: 14.250228
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c35ef3027e5da074c8b606e41a5e63fe, type: 3}
       propertyPath: m_LocalScale.z
-      value: 21.763706
+      value: 21.763712
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c35ef3027e5da074c8b606e41a5e63fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.018600464
+      value: 224.2086
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c35ef3027e5da074c8b606e41a5e63fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.149
+      value: 2.2610002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c35ef3027e5da074c8b606e41a5e63fe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 332.3794
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c35ef3027e5da074c8b606e41a5e63fe, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5632,8 +5627,7 @@ Transform:
   m_LocalPosition: {x: 224.19, y: 2.41, z: 332.3794}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 231181449}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2018523156
@@ -6530,5 +6524,6 @@ SceneRoots:
   - {fileID: 1441142171}
   - {fileID: 2123057125}
   - {fileID: 506091295}
+  - {fileID: 1359492091}
   - {fileID: 1986495881}
   - {fileID: 465680127}

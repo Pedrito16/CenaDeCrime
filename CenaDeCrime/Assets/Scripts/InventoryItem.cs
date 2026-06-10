@@ -21,8 +21,9 @@ public class InventoryItem : MonoBehaviour
 
         if (returnTween != null) 
         {
-            SetActive(true);
             EndTween(returnTween);
+            SetActive(true);
+            print("matei tween");
             returnTween = null;
         }
 
@@ -47,17 +48,24 @@ public class InventoryItem : MonoBehaviour
         SetActive(true);
         if (downWards)
         {
+            if(returnTween != null) 
+            {
+                EndTween(returnTween);
+                SetActive(true);
+                returnTween = null;
+                return;
+            }
             lastPos = transform.localPosition;
         }
 
         Vector3 newPos = new Vector3(transform.localPosition.x, transform.localPosition.y + (downWards ? -5 : 5), transform.localPosition.z);
-        returnTween = transform.DOLocalMove(newPos, 0.5f).SetEase(Ease.InCubic).OnComplete(() => SetActive(!downWards));
+        returnTween = transform.DOLocalMove(newPos, 0.25f).SetEase(Ease.InCubic).OnComplete(() => SetActive(!downWards));
     }
     void EndTween(Tween tweenToEnd)
     {
         transform.localPosition = lastPos;
         tweenToEnd.Kill();
-        print("matei tween");
+        
     }
     public void SetActive(bool active)
     {

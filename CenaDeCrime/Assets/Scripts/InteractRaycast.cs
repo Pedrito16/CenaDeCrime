@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 public class InteractRaycast : MonoBehaviour
 {
@@ -7,12 +8,11 @@ public class InteractRaycast : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] bool enteredRaycast;
-    [SerializeField] Interactable currentInteractable;
-
+    public UnityEvent onEvidenceEnterExit;
     Interactable lastInteractable;
-    void Start()
+    void Awake()
     {
-        
+        GameManager.instance.interactRaycast = this;
     }
     void Update()
     {
@@ -20,10 +20,13 @@ public class InteractRaycast : MonoBehaviour
         {
             if(hit.collider.TryGetComponent(out Interactable interactable))
             {
-                currentInteractable = interactable;
                 if (interactable != null && !enteredRaycast)
                 {
                     print("Entered raycast");
+
+                    if(interactable is EvidenceCollector)
+                        onEvidenceEnterExit?.Invoke();
+
                     interactable.OnRaycastEnter();
                     enteredRaycast = true;
                 }
@@ -37,6 +40,9 @@ public class InteractRaycast : MonoBehaviour
             if (lastInteractable != null)
             {
                 print("Exited raycast");
+                if(lastInteractable is EvidenceCollector)
+                    onEvidenceEnterExit?.Invoke();
+
                 lastInteractable.OnRaycastExit();
                 lastInteractable = null;
                 enteredRaycast = false;
