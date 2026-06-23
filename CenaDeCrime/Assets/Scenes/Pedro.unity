@@ -328,7 +328,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2.5, y: 2.5}
+  m_SizeDelta: {x: 2.67, y: 2.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &47999561
 MonoBehaviour:
@@ -2497,6 +2497,62 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &751673996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 751673997}
+  - component: {fileID: 751673998}
+  m_Layer: 0
+  m_Name: ScopeChanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &751673997
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751673996}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1152710363}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &751673998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751673996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40d3b623a4424f488bb53282a16e608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeFirstPersonCursor
+  cursorImage: {fileID: 47999561}
+  originalCursor:
+    spriteCursor: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    cursorSize: {x: 2.67, y: 2.67}
+  evidenceCursor:
+    spriteCursor: {fileID: 21300000, guid: 6cb16ed68b4058343b3a1a7538e53d28, type: 3}
+    cursorSize: {x: 10, y: 10}
+  isEvidenceCursorActive: 0
 --- !u!1 &762757865
 GameObject:
   m_ObjectHideFlags: 0
@@ -3257,9 +3313,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoviment
   playerCamera: {fileID: 1098736481}
   speed: 5
-  aceleration: 2
+  aceleration: 1.62
   deceleration: 1
-  maxSpeed: 7
+  maxSpeed: 6.09
   moveInput: {x: 0, y: 0, z: 0}
   lookInput: {x: 0, y: 0}
   orientation: {fileID: 145113678}
@@ -3273,8 +3329,8 @@ MonoBehaviour:
   yRotation: 0
   isSprinting: 0
   canSprint: 0
-  sprintAceleration: 5
-  sprintMaxSpeed: 20
+  sprintAceleration: 3.87
+  sprintMaxSpeed: 8.8
   currentStamina: 0
   maxStamina: 4
   timeToBeginRecoveringStamina: 1
@@ -3451,6 +3507,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 47999560}
+  - {fileID: 751673997}
   m_Father: {fileID: 1064661273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4644,6 +4701,7 @@ MonoBehaviour:
   dialogueController: {fileID: 0}
   interactUI: {fileID: 0}
   inventoryController: {fileID: 0}
+  interactRaycast: {fileID: 0}
 --- !u!4 &1536422958
 Transform:
   m_ObjectHideFlags: 0
@@ -5280,7 +5338,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   enteredRaycast: 0
-  currentInteractable: {fileID: 0}
+  onEvidenceEnterExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1695305065
 MonoBehaviour:
   m_ObjectHideFlags: 0
