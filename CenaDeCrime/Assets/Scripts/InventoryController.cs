@@ -46,6 +46,7 @@ public class InventoryController : MonoBehaviour
     public bool isActivated;
     [SerializeField] bool isOnRotateMode;
     [SerializeField] bool isRotating;
+    Vector3 rotationAxisOriginalScale;
 
     InventoryAmountUI inventoryAmountUI;
     Coroutine animationRoutine;
@@ -55,7 +56,7 @@ public class InventoryController : MonoBehaviour
 
         inventoryAmountUI = GetComponent<InventoryAmountUI>();
         inventoryCanvas.SetActive(false);
-
+        rotationAxisOriginalScale = rotationAxis.transform.localScale;
         canRotate = true;
         initialZoom = inventoryCam.transform.localPosition.z + offset.z;
         onRotateEnd?.Invoke();
@@ -125,6 +126,13 @@ public class InventoryController : MonoBehaviour
             selectedItem.Rotate(rotationDirection.normalized * rotationSpeed * Time.deltaTime);
         }
     }
+    private void LateUpdate()
+    {
+        if(!isOnRotateMode && isRotating) return;
+        rotationAxis.transform.position = inventoryItems[currentIndex].transform.position;
+        rotationAxis.transform.rotation = inventoryItems[currentIndex].transform.rotation;
+
+    }
 
     #region Inputs
     public void ActivateInventory(InputAction.CallbackContext context)
@@ -192,6 +200,7 @@ public class InventoryController : MonoBehaviour
     void ToggleRotate()
     {
         isOnRotateMode = !isOnRotateMode;
+        print("toggle rotate: " + isOnRotateMode);
         isRotating = false;
         if (!isOnRotateMode)
         {
@@ -208,11 +217,7 @@ public class InventoryController : MonoBehaviour
         {
             if (i == currentIndex)
             {
-                rotationAxis.transform.SetParent(inventoryItems[i].transform, true);
-
-                rotationAxis.transform.localPosition = Vector3.zero;
-                rotationAxis.transform.localRotation = Quaternion.identity;
-
+                rotationAxis.transform.localScale = rotationAxisOriginalScale;
                 continue;
             }
             inventoryItems[i].MoveDownwards(isOnRotateMode);
