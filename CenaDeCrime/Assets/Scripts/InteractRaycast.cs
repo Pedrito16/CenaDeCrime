@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 public class InteractRaycast : MonoBehaviour
 {
+    [SerializeField] FocusOnLook focusSystem;
     [SerializeField] float interactDistance = 3f;
     [SerializeField] LayerMask ignoreLayer;
 
@@ -29,8 +30,10 @@ public class InteractRaycast : MonoBehaviour
 
                     interactable.OnRaycastEnter();
                     enteredRaycast = true;
+
                 }
                 lastInteractable = interactable;
+                focusSystem.LookingAt(hit.collider.transform);
             }
         }
         else
@@ -43,6 +46,7 @@ public class InteractRaycast : MonoBehaviour
                 if(lastInteractable is EvidenceCollector)
                     onEvidenceEnterExit?.Invoke();
 
+                focusSystem.StopLooking();
                 lastInteractable.OnRaycastExit();
                 lastInteractable = null;
                 enteredRaycast = false;
