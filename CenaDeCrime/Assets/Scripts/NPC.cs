@@ -19,15 +19,18 @@ public class NPC : Interactable
     [SerializeField] int dialogueIndex;
     [SerializeField] int currentLineIndex;
     [SerializeField] bool isOnDialogue;
+
     DialogueController dialogueController;
     protected override void Start()
     {
         base.Start();
-        dialogueController = GameManager.instance.dialogueController;
+        dialogueController = gameManager.dialogueController;
     }
     public override void Interact()
     {
         bool hasDialogue = dialogueIndex < dialogues.Length;
+        gameManager.interactUI.SetTextAtive(false);
+
         if (hasDialogue)
            WriteLine();
     }

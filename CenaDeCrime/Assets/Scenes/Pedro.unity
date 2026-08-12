@@ -824,6 +824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractTest
   interactMessage: Pressione <color=blue>E</color> para interagir
+  gameManager: {fileID: 0}
 --- !u!1 &188032955
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EvidenceCollector
   interactMessage: "Pressione <color=green>E</color> para coletar evid\xEAncia"
+  gameManager: {fileID: 0}
   itemScript: {fileID: 0}
 --- !u!114 &231181445
 MonoBehaviour:
@@ -2332,7 +2334,8 @@ MonoBehaviour:
   npcNameText: {fileID: 2075288860}
   dialogueText: {fileID: 1309341350}
   useTypeWritter: 1
-  typeWritterSpeed: 0.05
+  typeWritterSpeed: 0.025
+  nextSelect: {fileID: 841180397}
   isOnDialogue: 0
 --- !u!1001 &635265712
 PrefabInstance:
@@ -2779,6 +2782,97 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819965909}
+  m_CullTransparentMesh: 1
+--- !u!1 &841180397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 841180398}
+  - component: {fileID: 841180401}
+  - component: {fileID: 841180400}
+  - component: {fileID: 841180399}
+  m_Layer: 5
+  m_Name: NextSelect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &841180398
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841180397}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1700693763}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 59.7, y: 39.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &841180399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841180397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9463b7ed6da15fb41b3863f817fbaf75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SinMove
+  amplitude: 1.2
+  frequency: 6
+  axis: 0
+--- !u!114 &841180400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841180397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: ea3c9c744146a054284ea07231660be9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &841180401
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841180397}
   m_CullTransparentMesh: 1
 --- !u!1 &939021850
 GameObject:
@@ -3955,10 +4049,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: dasdasasas
+  m_text: asdasdasdasdasdasdasdadadasdasdasdasdasdas
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 88ee4e43cc4d3cb4b9fc0952e2708ea4, type: 2}
-  m_sharedMaterial: {fileID: -791873290943431154, guid: 88ee4e43cc4d3cb4b9fc0952e2708ea4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0c9bd515e985469478609512c4b13f2d, type: 2}
+  m_sharedMaterial: {fileID: 9003405914408311469, guid: 0c9bd515e985469478609512c4b13f2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4846,6 +4940,7 @@ MonoBehaviour:
   interactMessage: 'Pressione <color=blue>E</color> para interagir
 
 '
+  gameManager: {fileID: 0}
   dialogues:
   - dialogueName: "Introdu\xE7\xE3o"
     npcName: Senhor Torre
@@ -4879,6 +4974,7 @@ MonoBehaviour:
   interactMessage: 'Pressione <color=green
 
     >E</color> para coletar'
+  gameManager: {fileID: 0}
   itemScript: {fileID: 0}
 --- !u!114 &1557302288
 MonoBehaviour:
@@ -5333,6 +5429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6706dfa35f9cf942abfdbb1a92ad6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractRaycast
+  focusSystem: {fileID: 0}
   interactDistance: 1.6
   ignoreLayer:
     serializedVersion: 2
@@ -5375,6 +5472,42 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1700693762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1700693763}
+  m_Layer: 5
+  m_Name: NextSelectPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1700693763
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700693762}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 841180398}
+  m_Father: {fileID: 1885597740}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 296.4, y: -184.3}
+  m_SizeDelta: {x: 59.700012, y: 39.299988}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1885597736
 GameObject:
   m_ObjectHideFlags: 0
@@ -5472,6 +5605,7 @@ RectTransform:
   - {fileID: 559393199}
   - {fileID: 2075288859}
   - {fileID: 1309341349}
+  - {fileID: 1700693763}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

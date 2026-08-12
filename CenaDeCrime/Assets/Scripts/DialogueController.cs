@@ -11,6 +11,9 @@ public class DialogueController : MonoBehaviour
     [SerializeField] bool useTypeWritter = true;
     [SerializeField] float typeWritterSpeed = 0.05f;
 
+    [Header("References")]
+    [SerializeField] GameObject nextSelect;
+
     [Header("Debug")]
     public bool isOnDialogue;
     string lastText;
@@ -22,9 +25,11 @@ public class DialogueController : MonoBehaviour
 
         GameManager.instance.dialogueController = this;
         SetActive(false);
+        nextSelect.gameObject.SetActive(false);
     }
     public void WriteDialogue(string text, string npcName = "")
     {
+        nextSelect.gameObject.SetActive(false);
         dialogueText.text = "";
         npcNameText.text = npcName;
 
@@ -51,6 +56,8 @@ public class DialogueController : MonoBehaviour
         if(typeWritterRoutine != null)
             StopCoroutine(typeWritterRoutine);
 
+        nextSelect.gameObject.SetActive(true);
+
         isOnDialogue = false;
 
         dialogueText.text = "";
@@ -61,6 +68,7 @@ public class DialogueController : MonoBehaviour
     public void SetActive(bool active)
     {
         npcNameText.gameObject.SetActive(active);
+        if(!active) nextSelect.gameObject.SetActive(false);
         dialogueText.gameObject.SetActive(active);
     }
     IEnumerator TypeWritter(string text)
@@ -72,5 +80,8 @@ public class DialogueController : MonoBehaviour
             dialogueText.text += characters[i];
             yield return new WaitForSeconds(typeWritterSpeed);
         }
+        nextSelect.gameObject.SetActive(true);
+        isOnDialogue = false;
+        typeWritterRoutine = null;
     }
 }
