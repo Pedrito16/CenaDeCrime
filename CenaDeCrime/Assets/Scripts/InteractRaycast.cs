@@ -33,7 +33,6 @@ public class InteractRaycast : MonoBehaviour
 
                 }
                 lastInteractable = interactable;
-                focusSystem.LookingAt(hit.collider.transform);
             }
         }
         else
@@ -46,7 +45,6 @@ public class InteractRaycast : MonoBehaviour
                 if(lastInteractable is EvidenceCollector)
                     onEvidenceEnterExit?.Invoke();
 
-                focusSystem.StopLooking();
                 lastInteractable.OnRaycastExit();
                 lastInteractable = null;
                 enteredRaycast = false;

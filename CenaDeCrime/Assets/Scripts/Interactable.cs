@@ -5,7 +5,7 @@ public abstract class Interactable : MonoBehaviour
     [Header("Interactable Settings")]
     [TextArea]
     [SerializeField] private string interactMessage = "Pressione <color=blue>E</color> para interagir";
-    GameManager gameManager;
+    public GameManager gameManager;
     protected virtual void Start()
     {
         gameManager = GameManager.instance;
