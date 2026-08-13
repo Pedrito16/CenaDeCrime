@@ -1469,6 +1469,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryEvidence
   evidenceNameText: {fileID: 819965911}
   evidenceDescriptionText: {fileID: 749499}
+--- !u!1 &317685609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 317685610}
+  m_Layer: 0
+  m_Name: Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &317685610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317685609}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 225.74, y: 5.48, z: 331.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2052213684}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &389355941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2343,27 +2375,27 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 317685610}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1d5ef9a93bc25354f80b09bfec54c07b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 202.37642
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d5ef9a93bc25354f80b09bfec54c07b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.36824036
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d5ef9a93bc25354f80b09bfec54c07b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.49524
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d5ef9a93bc25354f80b09bfec54c07b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d5ef9a93bc25354f80b09bfec54c07b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7071069
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d5ef9a93bc25354f80b09bfec54c07b, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2371,7 +2403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d5ef9a93bc25354f80b09bfec54c07b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d5ef9a93bc25354f80b09bfec54c07b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2396,7 +2428,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d5ef9a93bc25354f80b09bfec54c07b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2052213681}
   m_SourcePrefab: {fileID: 100100000, guid: 1d5ef9a93bc25354f80b09bfec54c07b, type: 3}
 --- !u!1 &716435440
 GameObject:
@@ -5960,6 +5995,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018523156}
   m_CullTransparentMesh: 1
+--- !u!1 &2052213680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d5ef9a93bc25354f80b09bfec54c07b, type: 3}
+  m_PrefabInstance: {fileID: 635265712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2052213681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052213680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75222b4287a9ae94bbadcf02f3082884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FollowMovenent
+  target: {fileID: 1064661273}
+  rotationOffsets: {x: 0, y: -90, z: 0}
+  originalPos: {x: 0, y: 0}
+--- !u!4 &2052213684 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d5ef9a93bc25354f80b09bfec54c07b, type: 3}
+  m_PrefabInstance: {fileID: 635265712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2075288858
 GameObject:
   m_ObjectHideFlags: 0
@@ -6710,7 +6770,7 @@ SceneRoots:
   - {fileID: 1536422958}
   - {fileID: 1885597740}
   - {fileID: 1595549006}
-  - {fileID: 635265712}
+  - {fileID: 317685610}
   - {fileID: 939021854}
   - {fileID: 481689515}
   - {fileID: 1227644933}
