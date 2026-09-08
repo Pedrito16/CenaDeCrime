@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
-public class ItemController : MonoBehaviour
+public class ItemPanelController : MonoBehaviour
 {
     [SerializeField] RectTransform itemPanel;
     [SerializeField] float animDuration = 2f;
