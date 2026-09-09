@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 119741373}
   - component: {fileID: 119741372}
   m_Layer: 5
-  m_Name: ItemBG
+  m_Name: ItemBG_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1587,7 +1587,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 317685610}
-  - component: {fileID: 317685611}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -1610,18 +1609,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &317685611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317685609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75222b4287a9ae94bbadcf02f3082884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FollowMovenent
 --- !u!1001 &389355941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2490,6 +2477,40 @@ MonoBehaviour:
   typeWritterSpeed: 0.025
   nextSelect: {fileID: 841180397}
   isOnDialogue: 0
+--- !u!1 &576155831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 576155832}
+  m_Layer: 0
+  m_Name: UIs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &576155832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576155831}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 203.5, y: 114.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 587743950}
+  - {fileID: 716435444}
+  - {fileID: 1418900949}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &587743946
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,7 +2607,7 @@ RectTransform:
   m_Children:
   - {fileID: 986774288}
   - {fileID: 1107600671}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 576155832}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2688,7 +2709,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1682056341}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 576155832}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3262,6 +3283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 986774288}
   - component: {fileID: 986774289}
+  - component: {fileID: 986774290}
   m_Layer: 5
   m_Name: ItemController
   m_TagString: Untagged
@@ -3295,14 +3317,32 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986774287}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b07156aa37266c4c9d1cad277983b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPanelController
-  itemPanel: {fileID: 0}
-  animDuration: 2
+  itemPanel: {fileID: 1107600671}
+  animDuration: 0.35
   isActive: 0
+  timeActivated: 5
+--- !u!114 &986774290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986774287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aaa9bf705564404fa2fc43724e5af7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HorizontalInventory
+  items:
+  - itemSelectionImage: {fileID: 1077399837}
+    itemObject: {fileID: 3822005830067462348}
+  hasItemEquipped: 0
+  currentEquippedItemIndex: 0
 --- !u!1 &1000850040
 GameObject:
   m_ObjectHideFlags: 0
@@ -3424,7 +3464,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000850040}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!4 &1000850044
 Transform:
   m_ObjectHideFlags: 0
@@ -3555,6 +3595,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 145113678}
+  - {fileID: 4486058714311490166}
   - {fileID: 1098736481}
   - {fileID: 1152710363}
   m_Father: {fileID: 0}
@@ -3771,6 +3812,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3108d0e6-7995-4fdd-974c-ed2ffe8f7798
     m_ActionName: 'Player/MouseScroll[/Mouse/scroll/down,/Mouse/scroll/up]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 986774289}
+        m_TargetAssemblyTypeName: ItemPanelController, Assembly-CSharp
+        m_MethodName: OnEquipItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 986774290}
+        m_TargetAssemblyTypeName: HorizontalInventory, Assembly-CSharp
+        m_MethodName: OnEquipItemIndex
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 65f9ec25-dd7b-4f93-8b13-76fd9167fbbd
+    m_ActionName: 'Player/EquipItem[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5,/Keyboard/6,/Keyboard/7]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3833,7 +3902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1077399838
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3866,7 +3935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
+  m_Color: {r: 0.14551443, g: 0.21625066, b: 0.2830189, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -3996,7 +4065,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 285434356}
-  - {fileID: 4486058714311490166}
   - {fileID: 1695305062}
   - {fileID: 277586378}
   m_Father: {fileID: 1064661273}
@@ -5020,7 +5088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1418900949
 Transform:
   m_ObjectHideFlags: 0
@@ -5029,15 +5097,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418900948}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 191.0115, y: 0, z: 387.96982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.488495, y: -114.5, z: 387.96982}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 307532882}
   - {fileID: 507959007}
   - {fileID: 92417659}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 576155832}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1428558800
 GameObject:
@@ -7392,7 +7460,7 @@ GameObject:
   - component: {fileID: 6293822942349829757}
   - component: {fileID: 5511401905142495926}
   - component: {fileID: 5556899910886438115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7410,7 +7478,7 @@ GameObject:
   - component: {fileID: 9053400147605944745}
   - component: {fileID: 8819542415950070698}
   - component: {fileID: 3159129556472332103}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7495,7 +7563,7 @@ GameObject:
   - component: {fileID: 734095758221500691}
   - component: {fileID: 8344424242656614285}
   - component: {fileID: 489577655631924050}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7511,13 +7579,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4486058714311490166}
-  m_Layer: 0
+  - component: {fileID: 4486058714311490167}
+  m_Layer: 8
   m_Name: Prancheta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &3828767440332779370
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7535,16 +7604,65 @@ Transform:
   m_GameObject: {fileID: 3822005830067462348}
   serializedVersion: 2
   m_LocalRotation: {x: -0.19633417, y: -0.6793032, z: 0.19928442, w: 0.6784436}
-  m_LocalPosition: {x: 0.54, y: -0.293, z: 1.04}
-  m_LocalScale: {x: 0.090715684, y: 0.109063424, z: 0.109063424}
+  m_LocalPosition: {x: 0.5399933, y: 0.28399992, z: 1.0400085}
+  m_LocalScale: {x: 0.090715684, y: 0.10906344, z: 0.109063424}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 734095758221500691}
   - {fileID: 99243525307221040}
   - {fileID: 6293822942349829757}
   - {fileID: 9053400147605944745}
-  m_Father: {fileID: 1098736481}
+  m_Father: {fileID: 1064661273}
   m_LocalEulerAnglesHint: {x: 0.249, y: -90, z: 32.49}
+--- !u!114 &4486058714311490167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822005830067462348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c57b8b30a5eac6448bc38a0cf499e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FollowObject
+  target: {fileID: 277586378}
+  rotationTarget: {fileID: 1064661273}
+  rotationOffset: {x: -2, y: 69, z: 33}
+  speed: 10
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8277183
+      value: 1.0292317
+      inSlope: 0.3195634
+      outSlope: 0.3195634
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4692016726198377869
 GameObject:
   m_ObjectHideFlags: 0
@@ -7556,7 +7674,7 @@ GameObject:
   - component: {fileID: 99243525307221040}
   - component: {fileID: 1480310708130555421}
   - component: {fileID: 5941216600067129228}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7882,8 +8000,6 @@ SceneRoots:
   - {fileID: 1064661273}
   - {fileID: 156310535}
   - {fileID: 1555103879}
-  - {fileID: 1418900949}
-  - {fileID: 716435444}
   - {fileID: 2100267340}
   - {fileID: 1536422958}
   - {fileID: 1885597740}
@@ -7899,4 +8015,4 @@ SceneRoots:
   - {fileID: 1359492091}
   - {fileID: 1986495881}
   - {fileID: 465680127}
-  - {fileID: 587743950}
+  - {fileID: 576155832}
