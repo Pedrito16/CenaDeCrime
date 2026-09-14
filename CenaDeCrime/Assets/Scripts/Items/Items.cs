@@ -8,6 +8,10 @@ public abstract class Items : MonoBehaviour
     }
     public virtual void UseItem()
     {
-        // Implement item usage logic here
+        
+    }
+    public virtual void StopUsingItem()
+    {
+
     }
 }

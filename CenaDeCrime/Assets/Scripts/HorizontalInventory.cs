@@ -12,6 +12,7 @@ public class HorizontalInventory : MonoBehaviour
 {
     [SerializeField] HorizontalInventoryItem[] items;
     [SerializeField] bool hasItemEquipped = false;
+    [SerializeField] bool isUsingItem = false;
     [SerializeField] int currentEquippedItemIndex = 0;
     void Start()
     {
@@ -39,6 +40,23 @@ public class HorizontalInventory : MonoBehaviour
 
                 currentEquippedItemIndex = index;
                 hasItemEquipped = true;
+            }
+        }
+    }
+    public void OnUseItem(InputAction.CallbackContext context) 
+    { 
+        if (context.started && hasItemEquipped)
+        {
+            Items item = items[currentEquippedItemIndex].itemObject.GetComponent<Items>();
+            if(!isUsingItem)
+            {
+                item.UseItem();
+                isUsingItem = true;
+            }
+            else
+            {
+                item.StopUsingItem();
+                isUsingItem = false;
             }
         }
     }

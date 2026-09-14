@@ -3342,6 +3342,7 @@ MonoBehaviour:
   - itemSelectionImage: {fileID: 1077399837}
     itemObject: {fileID: 3822005830067462348}
   hasItemEquipped: 0
+  isUsingItem: 0
   currentEquippedItemIndex: 0
 --- !u!1 &1000850040
 GameObject:
@@ -3840,6 +3841,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 65f9ec25-dd7b-4f93-8b13-76fd9167fbbd
     m_ActionName: 'Player/EquipItem[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5,/Keyboard/6,/Keyboard/7]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 986774290}
+        m_TargetAssemblyTypeName: HorizontalInventory, Assembly-CSharp
+        m_MethodName: OnUseItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b6e9a293-2f76-4b46-a6eb-ba139a085c27
+    m_ActionName: 'Player/UseItem[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -4066,6 +4083,7 @@ Transform:
   m_Children:
   - {fileID: 285434356}
   - {fileID: 1695305062}
+  - {fileID: 1823509742}
   - {fileID: 277586378}
   m_Father: {fileID: 1064661273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6362,6 +6380,37 @@ RectTransform:
   m_AnchoredPosition: {x: 296.4, y: -184.3}
   m_SizeDelta: {x: 59.700012, y: 39.299988}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1823509741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1823509742}
+  m_Layer: 0
+  m_Name: FrontFacePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1823509742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823509741}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.024, y: -0.011, z: 1.027008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1098736481}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1885597736
 GameObject:
   m_ObjectHideFlags: 0
@@ -7580,6 +7629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4486058714311490166}
   - component: {fileID: 4486058714311490167}
+  - component: {fileID: 4486058714311490168}
   m_Layer: 8
   m_Name: Prancheta
   m_TagString: Untagged
@@ -7627,8 +7677,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowObject
   target: {fileID: 277586378}
+  frontFaceTarget: {fileID: 1823509742}
   rotationTarget: {fileID: 1064661273}
+  useFrontFaceTarget: 0
   rotationOffset: {x: -2, y: 69, z: 33}
+  frontFaceRotationOffset: {x: 0, y: 90, z: 45}
   speed: 10
   curve:
     serializedVersion: 2
@@ -7663,6 +7716,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4486058714311490168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822005830067462348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b122396052e05348bf5c2c8dca0b691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClipboardItem
+  clipboardFollow: {fileID: 4486058714311490167}
+  clipboardUI: {fileID: 0}
 --- !u!1 &4692016726198377869
 GameObject:
   m_ObjectHideFlags: 0
