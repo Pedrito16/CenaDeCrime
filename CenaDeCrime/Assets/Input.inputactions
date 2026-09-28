@@ -44,12 +44,12 @@
                 },
                 {
                     "name": "Interact",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "b1511e0f-f46e-4457-b13c-9240d3159ec9",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Inventory",
@@ -197,6 +197,17 @@
                     "name": "",
                     "id": "9c29d581-11dc-46f0-8321-016cec2397a4",
                     "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a17d0d13-bdfd-4663-8d7d-eece8ac97b42",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

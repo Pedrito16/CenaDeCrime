@@ -51,7 +51,7 @@ public class DialogueController : MonoBehaviour
         else
             dialogueText.text = text;
     }
-    void ResetText()
+    public void ResetText()
     {
         if(typeWritterRoutine != null)
             StopCoroutine(typeWritterRoutine);
