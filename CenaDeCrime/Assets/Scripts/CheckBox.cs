@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class CheckBox : MonoBehaviour, IPointerClickHandler
 {
@@ -8,6 +9,7 @@ public class CheckBox : MonoBehaviour, IPointerClickHandler
     [SerializeField] Image boxImage;
     [SerializeField] Sprite emptyBox;
     [SerializeField] Sprite checkedBox;
+    [SerializeField] UnityEvent onChecked;
     [Space(10)]
     public bool isChecked = false;
     void Start()

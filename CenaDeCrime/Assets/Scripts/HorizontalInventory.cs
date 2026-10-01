@@ -16,7 +16,7 @@ public class HorizontalInventory : MonoBehaviour
     [SerializeField] int currentEquippedItemIndex = 0;
     void Start()
     {
-        
+        GameManager.instance.horizontalInventory = this;
     }
     public void OnEquipItemIndex(InputAction.CallbackContext context)
     {
@@ -43,21 +43,21 @@ public class HorizontalInventory : MonoBehaviour
             }
         }
     }
+    public void DeactivateUseItem()
+    {
+        if (hasItemEquipped)
+        {
+            items[currentEquippedItemIndex].itemObject.GetComponent<Items>().StopUsingItem();
+            isUsingItem = false;
+        }
+    }
     public void OnUseItem(InputAction.CallbackContext context) 
     { 
         if (context.started && hasItemEquipped)
         {
             Items item = items[currentEquippedItemIndex].itemObject.GetComponent<Items>();
-            if(!isUsingItem)
-            {
-                item.UseItem();
-                isUsingItem = true;
-            }
-            else
-            {
-                item.StopUsingItem();
-                isUsingItem = false;
-            }
+            item.UseItem();
+            isUsingItem = true;
         }
     }
 }

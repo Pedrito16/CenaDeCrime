@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Header("Read-only")]
+    public HorizontalInventory horizontalInventory;
     public PlayerMoviment playerMovement;
     public DialogueController dialogueController;
     public InteractUI interactUI;
