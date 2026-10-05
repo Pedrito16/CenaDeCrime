@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.006
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0.74
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 27fe7b1bb5d22d448898a662494113f3, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c82a334cf5a5e47978749c210cee72a7, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38776,7 +38776,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 29.48
-  m_ColorTemperature: 20000
+  m_ColorTemperature: 3045
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -52766,6 +52766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 833964994}
   - component: {fileID: 833964993}
+  - component: {fileID: 833964995}
   m_Layer: 0
   m_Name: CutsceneDialogue
   m_TagString: Untagged
@@ -52792,9 +52793,13 @@ MonoBehaviour:
     - 'Boa tarde detetive Michael.
 
 '
-  - dialogueName: 
-    npcName: 
-    lines: []
+  - dialogueName: Fala2_Caso
+    npcName: "Delegado Alu\xEDsio"
+    lines:
+    - "Desculpe te chamar t\xE3o tarde assim, mas temos um novo caso na rua Azevedo
+      14."
+  currentDialogueIndex: 0
+  currentLineIndex: 0
 --- !u!4 &833964994
 Transform:
   m_ObjectHideFlags: 0
@@ -52810,6 +52815,96 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &833964995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833964992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 56a0ebf54307b85449b694a7208f3b7b, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 55039459-9355-4983-bc83-5443124d9618
+    m_ActionName: 'Player/Move[/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 33912f58-d4f7-4299-b118-61540974e7ad
+    m_ActionName: 'Player/Look[/Mouse/delta]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 614ebce0-a338-4b9f-8cd8-46f9ac7d0754
+    m_ActionName: 'Player/Sprint[/Keyboard/shift]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 708ab33a-b8a0-4a5b-b91f-c04d2a92be9f
+    m_ActionName: 'Player/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 833964993}
+        m_TargetAssemblyTypeName: CutsceneDialogue, Assembly-CSharp
+        m_MethodName: OnPassDialogue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b1511e0f-f46e-4457-b13c-9240d3159ec9
+    m_ActionName: 'Player/Interact[/Keyboard/e,/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9b099d93-bc4e-429c-a642-b4bf75900f64
+    m_ActionName: 'Player/Inventory[/Keyboard/tab]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d3aaebc1-b153-46d3-a5b1-4d9aa6329d87
+    m_ActionName: 'Player/RotateInventory[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5595f3d4-bace-4646-a4b0-3c263ea12bc2
+    m_ActionName: 'Player/MoveAD[/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d16d907b-b613-4be3-be8d-4345bfa00e15
+    m_ActionName: 'Player/RotateItem[/Keyboard/d,/Keyboard/a,/Keyboard/s,/Keyboard/w,/Keyboard/q,/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3108d0e6-7995-4fdd-974c-ed2ffe8f7798
+    m_ActionName: 'Player/MouseScroll[/Mouse/scroll/down,/Mouse/scroll/up]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 65f9ec25-dd7b-4f93-8b13-76fd9167fbbd
+    m_ActionName: 'Player/EquipItem[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5,/Keyboard/6,/Keyboard/7]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b6e9a293-2f76-4b46-a6eb-ba139a085c27
+    m_ActionName: 'Player/UseItem[/Mouse/leftButton]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &834432134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73775,6 +73870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de655ab55e89447469b919c40ba695fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  horizontalInventory: {fileID: 0}
   playerMovement: {fileID: 0}
   dialogueController: {fileID: 0}
   interactUI: {fileID: 0}
@@ -95808,8 +95904,8 @@ Transform:
   m_GameObject: {fileID: 1537263509}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -615.31934, y: -0.39, z: -13.03425}
-  m_LocalScale: {x: 1082.1863, y: 0.32056385, z: 11.513907}
+  m_LocalPosition: {x: -707.6983, y: -0.39, z: -13.03425}
+  m_LocalScale: {x: 1266.9503, y: 0.32056385, z: 11.513907}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 740810087}
@@ -128124,11 +128220,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4691034029743694220, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 11.8
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4691034029743694220, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 52.2
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 6609821935657000739, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_LocalPosition.x
@@ -128176,7 +128272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8359105536171881791, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_fontSize
-      value: 32.5
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359105536171881791, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
+      propertyPath: m_margin.z
+      value: -168.15698
       objectReference: {fileID: 0}
     - target: {fileID: 8359105536171881791, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_fontAsset
@@ -128184,7 +128284,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 021c7e18fce45ba47b7bf36a969654a7, type: 2}
     - target: {fileID: 8359105536171881791, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_fontSizeBase
-      value: 32.5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8359105536171881791, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_sharedMaterial
@@ -128208,11 +128308,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8448707778481928739, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 306.3
+      value: 328
       objectReference: {fileID: 0}
     - target: {fileID: 8448707778481928739, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -190.9
+      value: -194
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
