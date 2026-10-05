@@ -20,6 +20,10 @@ public class EvidenceCollector : Interactable
     {
         base.OnRaycastEnter();
     }
+    public override void ChangeLayer(bool entered)
+    {
+        base.ChangeLayer(entered);
+    }
     public override void OnRaycastExit()
     {
        base.OnRaycastExit();
