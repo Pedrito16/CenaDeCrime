@@ -12,7 +12,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] float typeWritterSpeed = 0.05f;
 
     [Header("References")]
-    [SerializeField] GameObject nextSelect;
+    public GameObject nextSelect;
 
     [Header("Debug")]
     public bool isOnDialogue;

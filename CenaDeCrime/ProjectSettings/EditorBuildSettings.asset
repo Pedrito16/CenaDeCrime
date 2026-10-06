@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Menu.unity
+    guid: 9fb6cfc4205eaa44cbfda32f2d98d336
+  - enabled: 1
+    path: Assets/Scenes/CutScenePrincipal.unity
+    guid: e371b427abac4344f8b7ceeb2ac181e4
+  - enabled: 1
+    path: Assets/Scenes/CarroChegandoCutscene.unity
+    guid: 7a7fe49aadbdaa041a8c77afe62bb553
+  - enabled: 1
+    path: Assets/Scenes/Ventura.unity
+    guid: bd352ce71c98b4f43b851dbabc0dda3a
+  - enabled: 1
+    path: Assets/Scenes/Interior.unity
+    guid: 4de9f02a9ed492641a8974acf9a9b13f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
