@@ -14,8 +14,8 @@ TagManager:
   - InventoryLayer
   - InFront
   - ItemLayer
-  - 
-  - 
+  - BetoneiraLayer
+  - InteractableWithoutOutline
   - 
   - 
   - 

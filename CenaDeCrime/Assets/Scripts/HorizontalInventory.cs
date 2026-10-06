@@ -32,6 +32,7 @@ public class HorizontalInventory : MonoBehaviour
                     items[currentEquippedItemIndex].itemSelectionImage.SetActive(false);
                     items[currentEquippedItemIndex].itemObject.SetActive(false);
 
+                    if(hasItemEquipped && isUsingItem) DeactivateUseItem();
                     hasItemEquipped = false;
                     return;
                 }
@@ -53,7 +54,7 @@ public class HorizontalInventory : MonoBehaviour
     }
     public void OnUseItem(InputAction.CallbackContext context) 
     { 
-        if (context.started && hasItemEquipped)
+        if (context.started && hasItemEquipped && !isUsingItem)
         {
             Items item = items[currentEquippedItemIndex].itemObject.GetComponent<Items>();
             item.UseItem();

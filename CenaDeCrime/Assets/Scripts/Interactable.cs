@@ -17,9 +17,16 @@ public abstract class Interactable : MonoBehaviour
     public virtual void OnRaycastEnter()
     {
         gameManager.interactUI.GenerateText(interactMessage);
+        ChangeLayer(true);
+    }
+    public virtual void ChangeLayer(bool entered)
+    {
+        string layer = entered ? "Interactable" : "InteractableWithoutOutline";
+        gameObject.layer = LayerMask.NameToLayer(layer);
     }
     public virtual void OnRaycastExit()
     {
         gameManager.interactUI.SetTextAtive(false);
+        ChangeLayer(false);
     }
 }
