@@ -1,5 +1,6 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+
 [System.Serializable]
 public class Dialogue
 {
@@ -7,6 +8,7 @@ public class Dialogue
     public string npcName;
     [TextArea]
     public string[] lines;
+    public UnityEvent onLinesEnd;
 }
 public class NPC : Interactable
 {

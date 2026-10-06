@@ -41,6 +41,7 @@ public class CutsceneDialogue : MonoBehaviour
         else
         {
             print("acabou lines, passando pro proximo");
+            dialogues[currentDialogueIndex].onLinesEnd?.Invoke();
             currentDialogueIndex++;
             currentLineIndex = 0;
             if (currentDialogueIndex < dialogues.Length)

@@ -28255,6 +28255,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 409628, guid: 702740a5e4ac1ee40a1888d3b62faa91, type: 3}
   m_PrefabInstance: {fileID: 482774616}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &482818530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 482818531}
+  - component: {fileID: 482818532}
+  m_Layer: 0
+  m_Name: WalkTalkHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &482818531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482818530}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.17920402, y: -0.26154187, z: -0.09902072, w: 0.9432267}
+  m_LocalPosition: {x: -4.19, y: 8.27, z: -18.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 824834530}
+  - {fileID: 1977703770}
+  m_Father: {fileID: 3058640159217606654}
+  m_LocalEulerAnglesHint: {x: 16.634, y: -33.503, z: -17.025}
+--- !u!114 &482818532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482818530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44b385c0f27c684ebdb09037702c213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveTween
+  duration: 1
+  ease: 1
+  originalPos: {x: -4.19, y: 8.27, z: -18.42}
+  target: {x: -13.23, y: 11.6, z: -24.08}
 --- !u!1001 &484791373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52793,11 +52843,58 @@ MonoBehaviour:
     - 'Boa tarde detetive Michael.
 
 '
+    onLinesEnd:
+      m_PersistentCalls:
+        m_Calls: []
   - dialogueName: Fala2_Caso
     npcName: "Delegado Alu\xEDsio"
     lines:
-    - "Desculpe te chamar t\xE3o tarde assim, mas temos um novo caso na rua Azevedo
-      14."
+    - "Desculpe te chamar t\xE3o tarde assim, mas temos um caso ocorrendo na rua
+      Azevedo 14."
+    onLinesEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - dialogueName: Fala3_Carta
+    npcName: "Delegado Alu\xEDsio"
+    lines:
+    - Foi dito que uma pessoa se afogou enquanto dirigia, e isso o levou a sua morte.
+    onLinesEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - dialogueName: Fala4_Chegar
+    npcName: "Delegado Alu\xEDsio"
+    lines:
+    - "Preciso que voc\xEA venha o quanto antes poss\xEDvel na cena do crime, para
+      desvendar esse mist\xE9rio."
+    onLinesEnd:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 482818532}
+          m_TargetAssemblyTypeName: MoveTween, Assembly-CSharp
+          m_MethodName: MoveToTarget
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - dialogueName: Fala5_ACaminho
+    npcName: Detetive Michael
+    lines:
+    - Fechou to indo ai chefe
+    onLinesEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - dialogueName: Fala6_Pagamento
+    npcName: Detetive Michael
+    lines:
+    - "Voc\xEA vai ficar me devendo uma cerveja"
+    onLinesEnd:
+      m_PersistentCalls:
+        m_Calls: []
   currentDialogueIndex: 0
   currentLineIndex: 0
 --- !u!4 &833964994
@@ -77483,7 +77580,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3058640159217606654}
+    m_TransformParent: {fileID: 482818531}
     m_Modifications:
     - target: {fileID: 180557533655662575, guid: 930b7a19d446f4b4c9c810e37e84e625, type: 3}
       propertyPath: m_Name
@@ -77491,7 +77588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 705561775665358165, guid: 930b7a19d446f4b4c9c810e37e84e625, type: 3}
       propertyPath: m_LocalScale.x
-      value: -8.592983
+      value: -8.592982
       objectReference: {fileID: 0}
     - target: {fileID: 705561775665358165, guid: 930b7a19d446f4b4c9c810e37e84e625, type: 3}
       propertyPath: m_LocalScale.y
@@ -77499,19 +77596,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 705561775665358165, guid: 930b7a19d446f4b4c9c810e37e84e625, type: 3}
       propertyPath: m_LocalScale.z
-      value: 8.592984
+      value: 8.592983
       objectReference: {fileID: 0}
     - target: {fileID: 705561775665358165, guid: 930b7a19d446f4b4c9c810e37e84e625, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.4202092
+      value: 3.4202132
       objectReference: {fileID: 0}
     - target: {fileID: 705561775665358165, guid: 930b7a19d446f4b4c9c810e37e84e625, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 43.74353
+      value: 43.743523
       objectReference: {fileID: 0}
     - target: {fileID: 705561775665358165, guid: 930b7a19d446f4b4c9c810e37e84e625, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.7554064
+      value: 4.755327
       objectReference: {fileID: 0}
     - target: {fileID: 705561775665358165, guid: 930b7a19d446f4b4c9c810e37e84e625, type: 3}
       propertyPath: m_LocalRotation.w
@@ -77527,7 +77624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 705561775665358165, guid: 930b7a19d446f4b4c9c810e37e84e625, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.20621805
+      value: -0.20621806
       objectReference: {fileID: 0}
     - target: {fileID: 705561775665358165, guid: 930b7a19d446f4b4c9c810e37e84e625, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -108022,11 +108119,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3058640159217606654}
+    m_TransformParent: {fileID: 482818531}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f13c8c2111e8a814d852108325e3c12f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 126.57272
+      value: 126.57273
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f13c8c2111e8a814d852108325e3c12f, type: 3}
       propertyPath: m_LocalScale.y
@@ -108034,7 +108131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f13c8c2111e8a814d852108325e3c12f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 126.57275
+      value: 126.572754
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f13c8c2111e8a814d852108325e3c12f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -108046,15 +108143,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f13c8c2111e8a814d852108325e3c12f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.651496
+      value: 5.651509
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f13c8c2111e8a814d852108325e3c12f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.34658158
+      value: -0.34658155
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f13c8c2111e8a814d852108325e3c12f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.34658143
+      value: 0.3465814
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f13c8c2111e8a814d852108325e3c12f, type: 3}
       propertyPath: m_LocalRotation.y
@@ -108062,7 +108159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f13c8c2111e8a814d852108325e3c12f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.6163451
+      value: 0.61634505
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f13c8c2111e8a814d852108325e3c12f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -128283,6 +128380,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 021c7e18fce45ba47b7bf36a969654a7, type: 2}
     - target: {fileID: 8359105536171881791, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
+      propertyPath: m_lineSpacing
+      value: -1.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359105536171881791, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_fontSizeBase
       value: 30
       objectReference: {fileID: 0}
@@ -133973,9 +134074,8 @@ Transform:
   - {fileID: 1917734658241737457}
   - {fileID: 4538036057970036061}
   - {fileID: 5628373156588654788}
-  - {fileID: 824834530}
-  - {fileID: 1977703770}
   - {fileID: 1393792474}
+  - {fileID: 482818531}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3058640159217606655
