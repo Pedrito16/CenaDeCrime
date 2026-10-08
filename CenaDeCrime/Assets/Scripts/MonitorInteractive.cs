@@ -54,6 +54,7 @@ public class MonitorInteractive : MonoBehaviour
         if (estaNaTimeline && Input.GetKeyDown(KeyCode.Escape) && isReversible)
         {
             SairDaTimeline();
+            MenuController.instance.ActivateButtons();
         }
     }
 

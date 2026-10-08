@@ -408,6 +408,10 @@ PlayableDirector:
     value: {fileID: 1837093867}
   - key: {fileID: 8614135575492789851, guid: 3300d7fb933092c47b8b52445e97c764, type: 2}
     value: {fileID: 1168800156}
+  - key: {fileID: 6005712836550626897, guid: 3300d7fb933092c47b8b52445e97c764, type: 2}
+    value: {fileID: 1038861620}
+  - key: {fileID: -6401163825371589229, guid: 3300d7fb933092c47b8b52445e97c764, type: 2}
+    value: {fileID: 919132149604263516}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &100203305
@@ -2855,6 +2859,7 @@ GameObject:
   - component: {fileID: 1038861619}
   - component: {fileID: 1038861618}
   - component: {fileID: 1038861617}
+  - component: {fileID: 1038861620}
   m_Layer: 5
   m_Name: FadeImage
   m_TagString: Untagged
@@ -2931,6 +2936,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038861615}
   m_CullTransparentMesh: 1
+--- !u!95 &1038861620
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038861615}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1165371474
 GameObject:
   m_ObjectHideFlags: 0
@@ -3735,8 +3762,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1038861616}
   - {fileID: 1683335182}
+  - {fileID: 1038861616}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4711,6 +4738,8 @@ PlayableDirector:
     value: {fileID: 2121358622}
   - key: {fileID: -5472480202334893608, guid: e5b1ee32074173c4eb00ba10717b30c0, type: 2}
     value: {fileID: 1024245987}
+  - key: {fileID: -2567743990171468956, guid: e5b1ee32074173c4eb00ba10717b30c0, type: 2}
+    value: {fileID: 919132149604263516}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1918842753
@@ -6039,6 +6068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653259594976}
   - component: {fileID: 919132149604263515}
+  - component: {fileID: 919132149604263516}
   m_Layer: 0
   m_Name: MesaMenuCamera
   m_TagString: Untagged
@@ -6064,6 +6094,52 @@ MonoBehaviour:
   - {fileID: 217655528}
   - {fileID: 47919942}
   currentClicked: 0
+  sceneName: CutScenePrincipal
+--- !u!114 &919132149604263516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149604263514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalReceiver
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: c37c9ca6955307945ad0f24ee06ca083, type: 2}
+    - {fileID: 11400000, guid: e4aca7e2fe6b35e46a5c86ffcc629d90, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 919132149604263515}
+          m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+          m_MethodName: LoadScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 919132149604263515}
+          m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+          m_MethodName: Exit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!23 &945454400380684387
 MeshRenderer:
   m_ObjectHideFlags: 0

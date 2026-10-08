@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
     [SerializeField] MonitorInteractive[] monitorButtons;
     [SerializeField] int currentClicked;
+    [SerializeField] string sceneName; 
     public static MenuController instance;
     void Start()
     {
@@ -25,5 +27,14 @@ public class MenuController : MonoBehaviour
         {
             monitorButtons[i].enabled = true;
         }
+    }
+    public void LoadScene()
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+    public void Exit()
+    {
+        print("Quit");
+        Application.Quit();
     }
 }
