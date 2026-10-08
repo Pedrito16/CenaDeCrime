@@ -5,6 +5,7 @@ public class MonitorInteractive : MonoBehaviour
 {
     [Header("Tela do monitor")]
     public MeshRenderer monitorRenderer;
+    [SerializeField] GameObject textObject;
 
     [Header("Materiais")]
     public Material monitorLigado;
@@ -20,7 +21,8 @@ public class MonitorInteractive : MonoBehaviour
     public MonoBehaviour cameraController;
 
     [SerializeField] bool mouseEmCima = false;
-
+    public int buttonIndex;
+    public bool isReversible = false;
     private bool estaNaTimeline = false;
 
     void Start()
@@ -43,13 +45,13 @@ public class MonitorInteractive : MonoBehaviour
 
                 // Toca Timeline
                 timeline.Play();
-
+                MenuController.instance.OnClickButton(buttonIndex);
                 estaNaTimeline = true;
             }
         }
 
         // ESC para voltar
-        if (estaNaTimeline && Input.GetKeyDown(KeyCode.Escape))
+        if (estaNaTimeline && Input.GetKeyDown(KeyCode.Escape) && isReversible)
         {
             SairDaTimeline();
         }
@@ -94,6 +96,7 @@ public class MonitorInteractive : MonoBehaviour
     {
         if (monitorRenderer != null)
         {
+            textObject.SetActive(true);
             monitorRenderer.material = monitorLigado;
         }
 
@@ -109,6 +112,7 @@ public class MonitorInteractive : MonoBehaviour
         if (monitorRenderer != null)
         {
             monitorRenderer.material = monitorDesligado;
+            textObject.SetActive(false);
         }
 
         foreach (Light luz in monitorLights)
