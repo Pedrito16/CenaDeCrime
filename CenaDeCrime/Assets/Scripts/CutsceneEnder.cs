@@ -17,9 +17,6 @@ public class CutsceneEnder : MonoBehaviour
     }
     public void OnTimelineEnd()
     {
-        if(cutsceneDialogue != null && cutsceneDialogue.endedDialogues)
-        {
-            fadeImage.DOFade(1, fadeDuration).OnComplete(() => SceneManager.LoadScene(sceneToLoad));
-        }
+        fadeImage.DOFade(1, fadeDuration).OnComplete(() => SceneManager.LoadScene(sceneToLoad));
     }
 }

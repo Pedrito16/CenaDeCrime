@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogColor: {r: 0.48627454, g: 0.18431373, b: 0.16078432, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.006
   m_LinearFogStart: 0
@@ -53023,7 +53023,19 @@ MonoBehaviour:
     - "*risada* beleza... estarei na cena do crime quando voc\xEA chegar."
     onLinesEnd:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 833964996}
+          m_TargetAssemblyTypeName: CutsceneEnder, Assembly-CSharp
+          m_MethodName: OnTimelineEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   currentDialogueIndex: 0
   currentLineIndex: 0
   endedDialogues: 0
@@ -53147,7 +53159,7 @@ MonoBehaviour:
   cutsceneDialogue: {fileID: 833964993}
   fadeImage: {fileID: 1088617636}
   sceneToLoad: CarroChegandoCutscene
-  fadeDuration: 1
+  fadeDuration: 2
 --- !u!114 &833964997
 MonoBehaviour:
   m_ObjectHideFlags: 0

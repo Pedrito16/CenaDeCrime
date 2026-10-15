@@ -26,6 +26,7 @@ public class PlayerMoviment : MonoBehaviour
     public MovementState moveState;
 
     [Header("Public Settings")]
+    [SerializeField] float jumpRaycastDistance = 1.1f;
     public bool canMoveCam = true;
     public bool canMove = true;
 
@@ -182,6 +183,7 @@ public class PlayerMoviment : MonoBehaviour
     {
         if (context.started)
         {
+            isGrounded = Physics.Raycast(transform.position, Vector3.down, jumpRaycastDistance);
             if (isGrounded)
             {
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -209,6 +211,11 @@ public class PlayerMoviment : MonoBehaviour
         mouseSensitivity = value;
     }
     #endregion
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, Vector3.down * jumpRaycastDistance);
+    }
     #region GetValues
     public bool isMoving() => moveInput.magnitude > 0;
     #endregion
