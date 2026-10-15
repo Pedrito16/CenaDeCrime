@@ -184,7 +184,7 @@ public class PlayerMoviment : MonoBehaviour
         if (context.started)
         {
             isGrounded = Physics.Raycast(transform.position, Vector3.down, jumpRaycastDistance);
-            if (isGrounded)
+            if (isGrounded && canMove)
             {
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }

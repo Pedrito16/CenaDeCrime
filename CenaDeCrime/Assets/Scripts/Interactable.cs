@@ -7,7 +7,7 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] private string interactMessage = "Pressione <color=blue>E</color> para interagir";
     [Header("Outline")]
     [SerializeField] bool useOutlineInChildrens = false;
-    [SerializeField] MeshRenderer[] outlineRenderers;
+    [SerializeField] Renderer[] outlineRenderers;
     public GameManager gameManager;
     protected virtual void Start()
     {
@@ -24,16 +24,14 @@ public abstract class Interactable : MonoBehaviour
     }
     public virtual void ChangeLayer(bool entered)
     {
+        string layer = entered ? "Interactable" : "InteractableWithoutOutline";
+
         if (!useOutlineInChildrens)
-        {
-            string layer = entered ? "Interactable" : "InteractableWithoutOutline";
             gameObject.layer = LayerMask.NameToLayer(layer);
-        }
         else
         {
             for(int i = 0; i < outlineRenderers.Length; i++)
             {
-                string layer = entered ? "Interactable" : "InteractableWithoutOutline";
                 outlineRenderers[i].gameObject.layer = LayerMask.NameToLayer(layer);
             }
         }
