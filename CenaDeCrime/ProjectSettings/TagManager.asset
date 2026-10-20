@@ -16,7 +16,7 @@ TagManager:
   - ItemLayer
   - BetoneiraLayer
   - InteractableWithoutOutline
-  - 
+  - InteractableHighOutline
   - 
   - 
   - 

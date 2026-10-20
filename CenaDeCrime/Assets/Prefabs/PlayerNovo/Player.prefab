@@ -107,7 +107,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 1087
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
   interactDistance: 1.6
   ignoreLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 3080
   enteredRaycast: 0
   onEvidenceEnterExit:
     m_PersistentCalls:
@@ -594,6 +594,7 @@ MonoBehaviour:
   orientation: {fileID: 3611124259669164807}
   jumpForce: 5
   moveState: 0
+  jumpRaycastDistance: 1.1
   canMoveCam: 1
   canMove: 1
   camLerpSmooth: 10
@@ -1315,7 +1316,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: 046883c85ca89724a954b0f760f203d7, type: 3}
+  - {fileID: 2100000, guid: fd6ac2c5589918548b9270238f29d520, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1355,7 +1356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8082589040825602705
 Transform:
   m_ObjectHideFlags: 0
@@ -1441,6 +1442,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClipboardItem
   clipboardFollow: {fileID: 3898342036160535060}
   clipboardUI: {fileID: 0}
+  clipboardGroups:
+  - originalAlpha: 0.9
+    canvasGroup: {fileID: 0}
+  - originalAlpha: 1
+    canvasGroup: {fileID: 0}
+  duration: 0.5
 --- !u!1 &8938801343366215324
 GameObject:
   m_ObjectHideFlags: 0

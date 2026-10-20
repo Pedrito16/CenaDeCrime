@@ -391,6 +391,8 @@ PlayableDirector:
     value: {fileID: 365482551}
   - key: {fileID: -2685434276039908832, guid: b3a04698b814a344ab38da3039aba2cb, type: 2}
     value: {fileID: 992134996}
+  - key: {fileID: -2919685243241060297, guid: b3a04698b814a344ab38da3039aba2cb, type: 2}
+    value: {fileID: 1201768684}
   m_ExposedReferences:
     m_References:
     - 24fb73cb55d52be46952ec5de3507ce3: {fileID: 1742078599}
@@ -1701,7 +1703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
