@@ -1,16 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PassScene : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private string sceneName;
     void Start()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    public void ChangeScene()
     {
-        
+        SceneManager.LoadScene(sceneName);
     }
 }
