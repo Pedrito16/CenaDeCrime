@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.Bloom
-  active: 1
+  active: 0
   skipIterations:
     m_OverrideState: 0
     m_Value: 1
@@ -77,13 +77,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.9879398, y: 1, z: 0.99629444, w: -0.28021023}
+    m_Value: {x: 0.9879398, y: 1, z: 0.99629444, w: -0.049423333}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 0.9783184, y: 1, z: 0.9797898, w: -0.4728546}
+    m_Value: {x: 0.9783184, y: 1, z: 0.9797898, w: -0.47775954}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 0.9920652, y: 1, z: 0.9468789, w: -0.3677758}
+    m_Value: {x: 0.9920652, y: 1, z: 0.9468789, w: -0.44481045}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0
