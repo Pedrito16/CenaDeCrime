@@ -23,7 +23,6 @@ public class InteractRaycast : MonoBehaviour
             {
                 if (interactable != null && !enteredRaycast)
                 {
-                    print("Entered raycast");
 
                     if(interactable is EvidenceCollector)
                         onEvidenceEnterExit?.Invoke();

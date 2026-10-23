@@ -15,6 +15,7 @@ public class EvidenceCollector : Interactable
         itemScript.enabled = true;
         gameObject.layer = LayerMask.NameToLayer("InventoryLayer");
         GameManager.instance.inventoryController.AddItem(itemScript);
+        this.enabled = false;
     }
     public override void OnRaycastEnter()
     {

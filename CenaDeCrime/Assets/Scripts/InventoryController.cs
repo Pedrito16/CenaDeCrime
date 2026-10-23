@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class InventoryController : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] Transform lightTransform;
     [SerializeField] GameObject rotationAxis;
     [SerializeField] Transform inventoryCam;
     [SerializeField] Animator inventoryAnimator;
@@ -119,6 +120,7 @@ public class InventoryController : MonoBehaviour
         currentZoom01 = Mathf.Lerp(currentZoom01, targetZoom01, Time.deltaTime * zoomSmoothStep);
         float z = Mathf.Lerp(maxZoom, minZoom, currentZoom01); //suavizacao de zoom
         inventoryCam.transform.localPosition = new Vector3(offset.x, offset.y, z);
+
 
         if (isRotating)
         {
