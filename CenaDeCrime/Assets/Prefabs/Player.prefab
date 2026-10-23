@@ -250,7 +250,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: cf79cbc40378ba940bed43173902488d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -292,10 +292,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.44360706
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.035093904, y: 0, z: -0.07063516}
 --- !u!114 &1887865921331665626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,15 +309,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoviment
   playerCamera: {fileID: 1520572609670259930}
-  speed: 5
-  aceleration: 2
+  speed: 0.17
+  aceleration: 0.5
   deceleration: 1
-  maxSpeed: 7
+  maxSpeed: 3.6
   moveInput: {x: 0, y: 0, z: 0}
   lookInput: {x: 0, y: 0}
   orientation: {fileID: 3715613998484662824}
   jumpForce: 5
   moveState: 0
+  jumpRaycastDistance: 1.1
   canMoveCam: 1
   canMove: 1
   camLerpSmooth: 10
@@ -326,8 +327,8 @@ MonoBehaviour:
   yRotation: 0
   isSprinting: 0
   canSprint: 0
-  sprintAceleration: 5
-  sprintMaxSpeed: 20
+  sprintAceleration: 4.5
+  sprintMaxSpeed: 5.8
   currentStamina: 0
   maxStamina: 4
   timeToBeginRecoveringStamina: 1
@@ -521,6 +522,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3108d0e6-7995-4fdd-974c-ed2ffe8f7798
     m_ActionName: 'Player/MouseScroll[/Mouse/scroll/down,/Mouse/scroll/up]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 65f9ec25-dd7b-4f93-8b13-76fd9167fbbd
+    m_ActionName: 'Player/EquipItem[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5,/Keyboard/6,/Keyboard/7]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b6e9a293-2f76-4b46-a6eb-ba139a085c27
+    m_ActionName: 'Player/UseItem[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -902,7 +911,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -935,12 +944,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6706dfa35f9cf942abfdbb1a92ad6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractRaycast
+  focusSystem: {fileID: 0}
   interactDistance: 1.6
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 8
   enteredRaycast: 0
-  currentInteractable: {fileID: 0}
+  onEvidenceEnterExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4925301787111277103
 MonoBehaviour:
   m_ObjectHideFlags: 0
