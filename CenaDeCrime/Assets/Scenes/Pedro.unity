@@ -6326,10 +6326,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1222029195262235146, guid: 57d7675ffdbe43845b3fc3017cdcb303, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971570612265945550, guid: 57d7675ffdbe43845b3fc3017cdcb303, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3104806589827889381, guid: 57d7675ffdbe43845b3fc3017cdcb303, type: 3}
       propertyPath: lightSource
       value: 
       objectReference: {fileID: 1223256551}
+    - target: {fileID: 3758612129547609622, guid: 57d7675ffdbe43845b3fc3017cdcb303, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6053451321137472156, guid: 57d7675ffdbe43845b3fc3017cdcb303, type: 3}
       propertyPath: m_LocalPosition.x
       value: 206.757
@@ -6373,6 +6385,10 @@ PrefabInstance:
     - target: {fileID: 7297949481861627420, guid: 57d7675ffdbe43845b3fc3017cdcb303, type: 3}
       propertyPath: m_Name
       value: InterruptorPivot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297949481861627420, guid: 57d7675ffdbe43845b3fc3017cdcb303, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
