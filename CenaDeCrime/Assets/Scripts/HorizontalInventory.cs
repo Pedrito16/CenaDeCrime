@@ -48,7 +48,9 @@ public class HorizontalInventory : MonoBehaviour
     {
         if (hasItemEquipped)
         {
+            print("stop1");
             items[currentEquippedItemIndex].itemObject.GetComponent<Items>().StopUsingItem();
+            print("stop1");
             isUsingItem = false;
         }
     }
@@ -59,6 +61,15 @@ public class HorizontalInventory : MonoBehaviour
             Items item = items[currentEquippedItemIndex].itemObject.GetComponent<Items>();
             item.UseItem();
             isUsingItem = true;
+        }
+    }
+    public void OnStopUseItem(InputAction.CallbackContext context)
+    {
+        if (context.started && hasItemEquipped && isUsingItem)
+        {
+            Items item = items[currentEquippedItemIndex].itemObject.GetComponent<Items>();
+            item.StopUsingItem();
+            isUsingItem = false;
         }
     }
 }

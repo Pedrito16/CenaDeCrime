@@ -53,7 +53,6 @@ public class ItemPanelController : MonoBehaviour
                 ActivateItemPanel(true);
             else
                 timer = 0;
-
         }
     }
 }

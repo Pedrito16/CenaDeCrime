@@ -11,13 +11,14 @@ public class ClipboardItem : Items
 {
     [Header("References")]
     [SerializeField] FollowObject clipboardFollow;
-    [SerializeField] GameObject clipboardUI;
+    public GameObject clipboardUI;
     [SerializeField] CanvasGroupAlpha[] clipboardGroups;
 
     [Header("Config")]
     [SerializeField] float duration = 0.5f;
     void Start()
     {
+        GameManager.instance.clipboardItem = this;
         clipboardUI.SetActive(false);
     }
     public override void UseItem()

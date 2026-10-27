@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public PlayerMoviment playerMovement;
     public DialogueController dialogueController;
     public InteractUI interactUI;
+    public ClipboardItem clipboardItem;
     public InventoryController inventoryController;
     public InteractRaycast interactRaycast;
     public static GameManager instance;
