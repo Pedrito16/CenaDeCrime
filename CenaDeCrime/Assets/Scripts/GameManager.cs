@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public ClipboardItem clipboardItem;
     public InventoryController inventoryController;
     public InteractRaycast interactRaycast;
+    public InterrogationController interrogationController;
     public static GameManager instance;
     private void Awake()
     {
