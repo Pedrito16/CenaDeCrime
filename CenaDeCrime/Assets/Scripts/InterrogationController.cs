@@ -1,6 +1,12 @@
+using DG.Tweening;
+using System.Collections;
+using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using DG.Tweening;
+
+//using eu ando nas ruas;
+
 [System.Serializable]
 public class Suspect
 {
@@ -12,7 +18,9 @@ public class InterrogationController : MonoBehaviour
 {
     [SerializeField] public Suspect[] suspects;
     [SerializeField] Transform mainCameraTransform;
-
+    [SerializeField] TMP_Text text;
+    [Header("Config")]
+    [SerializeField] float typeWritterSpeed = 0.05f;
     [Header("Debug")]
     [SerializeField] int currentSuspectIndex;
     public int lastSuspectIndex;
@@ -48,12 +56,24 @@ public class InterrogationController : MonoBehaviour
         suspects[newSuspect].lightSource.SetActive(true);
         currentSuspectIndex = newSuspect;
     }
+    IEnumerator TypeWritter(string textToWrite)
+    {
+        text.gameObject.SetActive(true);
+        char[] chars = textToWrite.ToCharArray();
+        for(int i = 0;i < chars.Length; i++)
+        {
+            text.text += chars[i];
+            yield return new WaitForSeconds(typeWritterSpeed);
+        }
+    }
     #region Select
     public void OnSelectSuspect()
     {
         if (!isAnimationComplete) return;
 
         Suspect currentSuspect = suspects[currentSuspectIndex];
+
+        StartCoroutine(TypeWritter(currentSuspect.whatWillSay));
 
         canChangeSelected = false;
         isAnimationComplete = false;
