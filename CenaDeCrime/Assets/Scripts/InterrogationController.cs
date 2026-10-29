@@ -1,8 +1,8 @@
 using DG.Tweening;
 using System.Collections;
 using TMPro;
-using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 //using eu ando nas ruas;
@@ -19,12 +19,17 @@ public class InterrogationController : MonoBehaviour
     [SerializeField] public Suspect[] suspects;
     [SerializeField] Transform mainCameraTransform;
     [SerializeField] TMP_Text text;
+
     [Header("Config")]
     [SerializeField] float typeWritterSpeed = 0.05f;
+
     [Header("Debug")]
+    [SerializeField] UnityEvent onSelectSuspect;
+    [SerializeField] UnityEvent onDeselectSuspect;
     [SerializeField] int currentSuspectIndex;
     public int lastSuspectIndex;
     [Space(10)]
+    [SerializeField] bool isSelecting = false;
     [SerializeField] bool canChangeSelected = true;
     [SerializeField] bool isAnimationComplete = true;
 
@@ -69,15 +74,17 @@ public class InterrogationController : MonoBehaviour
     #region Select
     public void OnSelectSuspect()
     {
-        if (!isAnimationComplete) return;
+        if (!isAnimationComplete || isSelecting) return;
 
         Suspect currentSuspect = suspects[currentSuspectIndex];
-
+        isSelecting = true;
         StartCoroutine(TypeWritter(currentSuspect.whatWillSay));
 
         canChangeSelected = false;
         isAnimationComplete = false;
         camScript.enabled = false;
+
+        onSelectSuspect?.Invoke();
 
         mainCameraTransform.DOMove(currentSuspect.frontFaceCam.position, 0.5f).OnComplete(() =>
         {
@@ -90,9 +97,15 @@ public class InterrogationController : MonoBehaviour
     void OnDeselectSuspect()
     {
         Suspect currentSuspect = suspects[currentSuspectIndex];
+        StopCoroutine(TypeWritter(currentSuspect.whatWillSay));
+        text.gameObject.SetActive(false);
+        isSelecting = false;
+        text.text = "";
 
         isAnimationComplete = false;
         SwitchCams(false);
+
+        onDeselectSuspect?.Invoke();
 
         mainCameraTransform.DOMove(camOriginalPos, 0.5f).OnComplete(() => 
         {
