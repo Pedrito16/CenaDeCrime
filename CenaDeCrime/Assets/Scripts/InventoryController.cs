@@ -124,6 +124,8 @@ public class InventoryController : MonoBehaviour
 
         if (isRotating)
         {
+            if(inventoryItems.Count <= 0) return;
+
             Transform selectedItem = inventoryItems[currentIndex].transform;
             selectedItem.Rotate(rotationDirection.normalized * rotationSpeed * Time.deltaTime);
         }
@@ -131,6 +133,8 @@ public class InventoryController : MonoBehaviour
     private void LateUpdate()
     {
         if(!isOnRotateMode && isRotating) return;
+        if(!isActivated || inventoryItems.Count <= 0) return;
+        if(rotationAxis.activeSelf == false) return;
         rotationAxis.transform.position = inventoryItems[currentIndex].transform.position;
         rotationAxis.transform.rotation = inventoryItems[currentIndex].transform.rotation;
 
@@ -184,7 +188,7 @@ public class InventoryController : MonoBehaviour
     }
     public void ToggleRotateMode(InputAction.CallbackContext context)
     {
-        if (!isActivated) return;
+        if (!isActivated || inventoryItems.Count <= 0) return;
         if (context.started && canRotate)
             ToggleRotate();
     }

@@ -68,6 +68,8 @@ public class PlayerMoviment : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        DontDestroyOnLoad(gameObject);
     }
 
 

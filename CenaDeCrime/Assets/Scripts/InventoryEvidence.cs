@@ -9,7 +9,13 @@ public class InventoryEvidence : MonoBehaviour
     InventoryController inventoryController;
     void Start()
     {
+        
         inventoryController = GetComponent<InventoryController>();
+        if(inventoryController.inventoryItems.Count <= 0)
+        {
+            evidenceNameText.text = "Sem evidências!";
+            evidenceDescriptionText.text = "Você ainda não coletou nenhuma evidência.";
+        }
         inventoryController.onRecieveIndex.AddListener(OnChangeEvidence);
     }
     void OnChangeEvidence(int index)

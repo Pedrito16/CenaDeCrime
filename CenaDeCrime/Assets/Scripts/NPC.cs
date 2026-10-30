@@ -51,7 +51,6 @@ public class NPC : Interactable
     }
     void EndDialogue()
     {
-        dialogueIndex++;
 
         if (loopDialogueOnEnd && dialogueIndex >= dialogues.Length) //para loopar dialogo
             dialogueIndex = 0;

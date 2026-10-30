@@ -19,11 +19,13 @@ public class InterrogationController : MonoBehaviour
     [SerializeField] public Suspect[] suspects;
     [SerializeField] Transform mainCameraTransform;
     [SerializeField] TMP_Text text;
+    [SerializeField] PassScene passSceneScript;
 
     [Header("Config")]
     [SerializeField] float typeWritterSpeed = 0.05f;
 
     [Header("Debug")]
+    [SerializeField] UnityEvent onConfirmSuspect;
     [SerializeField] UnityEvent onSelectSuspect;
     [SerializeField] UnityEvent onDeselectSuspect;
     [SerializeField] int currentSuspectIndex;
@@ -60,6 +62,12 @@ public class InterrogationController : MonoBehaviour
         suspects[lastSuspectIndex].lightSource.SetActive(false);
         suspects[newSuspect].lightSource.SetActive(true);
         currentSuspectIndex = newSuspect;
+    }
+    public void OnConfirmSuspect()
+    {
+        if (!isAnimationComplete) return;
+        passSceneScript.sceneIndex = currentSuspectIndex;
+        onConfirmSuspect?.Invoke();
     }
     IEnumerator TypeWritter(string textToWrite)
     {
