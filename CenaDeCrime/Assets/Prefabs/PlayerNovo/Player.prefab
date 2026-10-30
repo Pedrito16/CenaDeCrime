@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 3680527711988861120}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.00000011920929, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -107,7 +107,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1087
+    m_Bits: 3135
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -151,8 +151,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractRaycast
   focusSystem: {fileID: 0}
-  interactDistance: 1.6
+  interactDistance: 1.8
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 3080
@@ -343,7 +343,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -508,8 +508,8 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4646669634229460614}
-  m_Enabled: 1
-  m_CastShadows: 1
+  m_Enabled: 0
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -556,7 +556,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4646669634229460614}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6d7e84405f16bad43b1a0921f68a72ba, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -594,7 +594,7 @@ MonoBehaviour:
   orientation: {fileID: 3611124259669164807}
   jumpForce: 5
   moveState: 0
-  jumpRaycastDistance: 1.1
+  jumpRaycastDistance: 1.03
   canMoveCam: 1
   canMove: 1
   camLerpSmooth: 10
@@ -842,6 +842,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b6e9a293-2f76-4b46-a6eb-ba139a085c27
     m_ActionName: 'Player/UseItem[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a1c586e2-7fa6-4cc6-978f-a81f7e006722
+    m_ActionName: 'Player/StopUseItem[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2356fae1-663e-4286-b370-4bcac9d067f0
+    m_ActionName: 'Player/Escape[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
