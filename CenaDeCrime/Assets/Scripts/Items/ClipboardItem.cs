@@ -19,6 +19,7 @@ public class ClipboardItem : Items
     void Start()
     {
         GameManager.instance.clipboardItem = this;
+        gameObject.SetActive(false);
         clipboardUI.SetActive(false);
     }
     public override void UseItem()

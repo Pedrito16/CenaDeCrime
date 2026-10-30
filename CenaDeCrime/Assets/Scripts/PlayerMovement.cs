@@ -1,6 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
+using UnityEngine.SceneManagement;
 enum CrouchState
 {
     standing,
@@ -49,14 +50,27 @@ public class PlayerMoviment : MonoBehaviour
     [SerializeField] float timeToRecoverStamina = 2f;
     [SerializeField] bool isRecoveringStamina;
 
+    [Header(("SpawnPoints"))]
+    [SerializeField] Vector3[] spawnPoints;
+
     [Header("Debug")]
     [SerializeField] Vector3 currentVelocity;
     [SerializeField] bool isGrounded;
     [SerializeField] bool startSliding;
-
+    
+    public static PlayerMoviment Instance;
     Rigidbody rb;
+
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
         GameManager.instance.playerMovement = this;
     }
     void Start()
@@ -70,7 +84,26 @@ public class PlayerMoviment : MonoBehaviour
         Cursor.visible = false;
     }
 
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (spawnPoints.Length > 0)
+        {
+            print("Scene loaded: " + scene.name);
+            if (scene.name == "Ventura")
+                transform.position = spawnPoints[0];
+            else if(scene.name == "Interior")
+                transform.position = spawnPoints[1];
+        }
+    }
     void FixedUpdate()
     {
         if (moveInput != Vector3.zero)

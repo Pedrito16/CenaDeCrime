@@ -37,6 +37,7 @@ public class HorizontalInventory : MonoBehaviour
                     return;
                 }
                 items[index].itemSelectionImage.SetActive(true);
+                print("use item");
                 items[index].itemObject.SetActive(true);
 
                 currentEquippedItemIndex = index;

@@ -1,18 +1,19 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DontDestroy : MonoBehaviour
 {
-    public static DontDestroy instance;
-    void Awake()
+    public static DontDestroy Instance;
+
+    private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 }

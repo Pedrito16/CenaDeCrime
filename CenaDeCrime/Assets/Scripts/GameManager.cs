@@ -12,15 +12,17 @@ public class GameManager : MonoBehaviour
     public InteractRaycast interactRaycast;
     public InterrogationController interrogationController;
     public static GameManager instance;
+
     private void Awake()
     {
-        if(instance == null)
+        if (instance != null && instance != this)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
             Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     void Start()
     {

@@ -6702,7 +6702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
       propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
       propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.size
@@ -6710,6 +6710,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
       propertyPath: m_ActionEvents.Array.data[9].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
+      propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
@@ -6747,7 +6751,7 @@ PrefabInstance:
     - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
       propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1998456790}
+      objectReference: {fileID: 605029530}
     - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
       propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6770,7 +6774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
       propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnScroll
+      value: OnEquipItemIndex
       objectReference: {fileID: 0}
     - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
       propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -6782,7 +6786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
       propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: PranchetaMoveDown, Assembly-CSharp
+      value: HorizontalInventory, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
       propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -6790,6 +6794,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
       propertyPath: m_ActionEvents.Array.data[9].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
+      propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 394199021978503126, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
@@ -6839,6 +6847,34 @@ PrefabInstance:
     - target: {fileID: 4646669634229460614, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671970459477917504, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
+      propertyPath: spawnPoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671970459477917504, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
+      propertyPath: spawnPoints.Array.data[0].x
+      value: 5.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671970459477917504, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
+      propertyPath: spawnPoints.Array.data[0].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671970459477917504, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
+      propertyPath: spawnPoints.Array.data[0].z
+      value: 37.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671970459477917504, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
+      propertyPath: spawnPoints.Array.data[1].x
+      value: -11.151
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671970459477917504, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
+      propertyPath: spawnPoints.Array.data[1].y
+      value: 1.348
+      objectReference: {fileID: 0}
+    - target: {fileID: 4671970459477917504, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
+      propertyPath: spawnPoints.Array.data[1].z
+      value: -33.422
       objectReference: {fileID: 0}
     - target: {fileID: 6822636130213116599, guid: 288e981d33f9e4349a40cdbc88ea2654, type: 3}
       propertyPath: clipboardUI
@@ -8321,6 +8357,7 @@ MonoBehaviour:
   outlineRenderers: []
   gameManager: {fileID: 0}
   sceneName: Interior
+  playerPosOnNewScene: {x: 0, y: 0, z: 0}
 --- !u!1001 &1451805423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10734,7 +10771,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2858726439978208547, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463564677205234582, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4675345401085148060, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_Antialiasing
