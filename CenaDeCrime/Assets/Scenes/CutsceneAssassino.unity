@@ -105706,6 +105706,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FadeController
   fadeGroup: {fileID: 1514029552}
   fadeDuration: 3
+  fadeOnStart: 1
+  onFadeOutComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1694082380
 Transform:
   m_ObjectHideFlags: 0
@@ -129411,10 +129415,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "O assassino de aluguel foi preso. \n\nPreso e condenado por 44 anos de
-    cadeia por alguns assassinatos que a equipe de investiga\xE7\xE3o ligou a ele
-    tamb\xE9m.\n\n\nVoc\xEA prendeu um assassino..\n\nPor\xE9m o assassino errado
-    do caso.\n\n\n\n\n\n\n     <color=red>Final errado.</color>"
+  m_text: "O assassino de aluguel foi preso. \n\n\nPreso e condenado por 44 anos
+    de cadeia por alguns assassinatos que a equipe de investiga\xE7\xE3o ligou a
+    ele tamb\xE9m.\n\n\nVoc\xEA prendeu um assassino..\n\nPor\xE9m o assassino errado
+    do caso.\n\n\n\n\n\n\n     <color=grey>Final neutro.</color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5c914313b16ff5641977d6f959a44ac0, type: 2}
   m_sharedMaterial: {fileID: -6208067954569776190, guid: 5c914313b16ff5641977d6f959a44ac0, type: 2}
