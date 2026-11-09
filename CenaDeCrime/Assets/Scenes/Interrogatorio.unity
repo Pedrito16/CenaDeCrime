@@ -7975,7 +7975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PassScene
   sceneIndex: 0
   scenes:
-  - CutsceneHomem
+  - CenaRevelada
   - CutsceneMulher
   - CutsceneAssassino
   sceneName: 

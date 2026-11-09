@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
+            print("deletando game manager da cena: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
             Destroy(gameObject);
             return;
         }
@@ -26,6 +27,6 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-
+        print("player movement na cena: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " = " + playerMovement);
     }
 }

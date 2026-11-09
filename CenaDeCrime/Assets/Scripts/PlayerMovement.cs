@@ -9,6 +9,7 @@ enum CrouchState
     laying
 }
 [RequireComponent(typeof(Rigidbody))]
+[DefaultExecutionOrder(-1)]
 public class PlayerMoviment : MonoBehaviour
 {
     [Header("Player Settings")]
@@ -65,6 +66,7 @@ public class PlayerMoviment : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            print("deletando player movement da cena: " + SceneManager.GetActiveScene().name);
             Destroy(gameObject);
             return;
         }

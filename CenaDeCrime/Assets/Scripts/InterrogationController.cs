@@ -36,6 +36,7 @@ public class InterrogationController : MonoBehaviour
     [SerializeField] bool isAnimationComplete = true;
 
     //privates
+    Coroutine typeWritterCoroutine;
     MenuCameraFollow camScript;
     Vector3 camOriginalPos;
     Vector3 camOriginalRotation;
@@ -86,7 +87,7 @@ public class InterrogationController : MonoBehaviour
 
         Suspect currentSuspect = suspects[currentSuspectIndex];
         isSelecting = true;
-        StartCoroutine(TypeWritter(currentSuspect.whatWillSay));
+        typeWritterCoroutine = StartCoroutine(TypeWritter(currentSuspect.whatWillSay));
 
         canChangeSelected = false;
         isAnimationComplete = false;
@@ -105,7 +106,7 @@ public class InterrogationController : MonoBehaviour
     void OnDeselectSuspect()
     {
         Suspect currentSuspect = suspects[currentSuspectIndex];
-        StopCoroutine(TypeWritter(currentSuspect.whatWillSay));
+        StopCoroutine(typeWritterCoroutine);
         text.gameObject.SetActive(false);
         isSelecting = false;
         text.text = "";
