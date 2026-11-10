@@ -14,8 +14,22 @@ public class HorizontalInventory : MonoBehaviour
     [SerializeField] bool hasItemEquipped = false;
     [SerializeField] bool isUsingItem = false;
     [SerializeField] int currentEquippedItemIndex = 0;
+    public static HorizontalInventory instance;
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
     void Start()
     {
+
         GameManager.instance.horizontalInventory = this;
     }
     public void OnEquipItemIndex(InputAction.CallbackContext context)

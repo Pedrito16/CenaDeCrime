@@ -18,6 +18,19 @@ public class ChangeFirstPersonCursor : MonoBehaviour
     [SerializeField] bool isEvidenceCursorActive = false;
 
     GameManager gameManager;
+    public static ChangeFirstPersonCursor instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
     void Start()
     {
 

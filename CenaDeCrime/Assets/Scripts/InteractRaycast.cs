@@ -11,8 +11,19 @@ public class InteractRaycast : MonoBehaviour
     [SerializeField] bool enteredRaycast;
     public UnityEvent onEvidenceEnterExit;
     Interactable lastInteractable;
+
+    public static InteractRaycast instance;
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         GameManager.instance.interactRaycast = this;
     }
     void Update()
@@ -54,7 +65,7 @@ public class InteractRaycast : MonoBehaviour
     {
         if (context.started)
         {
-            if (lastInteractable != null)
+            if (lastInteractable != null && !GameManager.instance.IsInventoryOpen())
             {
                 lastInteractable.Interact();
             }

@@ -51,6 +51,20 @@ public class InventoryController : MonoBehaviour
 
     InventoryAmountUI inventoryAmountUI;
     Coroutine animationRoutine;
+
+    public static InventoryController instance;
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
     void Start()
     {
         GameManager.instance.inventoryController = this;
@@ -108,10 +122,20 @@ public class InventoryController : MonoBehaviour
     }
     public void AddItem(InventoryItem newItem)
     {
+        if(IsItemAlreadyInInventory(newItem.evidence)) return;
+
         inventoryAmountUI.SpawnBall();
         inventoryItems.Add(newItem);
         newItem.transform.SetParent(transform);
         SortInventory();
+    }
+    public bool IsItemAlreadyInInventory(EvidenceInfoSO item)
+    {
+        foreach (InventoryItem inventoryItem in inventoryItems)
+        {
+            if (inventoryItem.evidence == item) return true;
+        }
+        return false;
     }
     private void Update()
     {

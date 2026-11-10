@@ -6,6 +6,19 @@ public class InteractUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI interactText;
 
     GameManager gameManager;
+    public static InteractUI instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
     void Start()
     {
         gameManager = GameManager.instance;

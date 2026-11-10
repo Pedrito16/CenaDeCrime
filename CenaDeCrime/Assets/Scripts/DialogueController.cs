@@ -18,9 +18,21 @@ public class DialogueController : MonoBehaviour
     public bool isOnDialogue;
     string lastText;
     Coroutine typeWritterRoutine;
-    void Awake()
+
+    public static DialogueController instance;
+    private void Awake()
     {
-        dialogueText.text = "";
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+    dialogueText.text = "";
         npcNameText.text = "";
 
         GameManager.instance.dialogueController = this;

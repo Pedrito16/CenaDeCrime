@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public InterrogationController interrogationController;
     public static GameManager instance;
 
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -28,5 +29,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         print("player movement na cena: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " = " + playerMovement);
+    }
+    public bool IsInventoryOpen()
+    {
+        return inventoryController != null && inventoryController.isActivated;
     }
 }

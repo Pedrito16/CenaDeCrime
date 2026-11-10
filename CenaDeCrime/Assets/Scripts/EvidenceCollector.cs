@@ -5,16 +5,24 @@ public class EvidenceCollector : Interactable
     [SerializeField] InventoryItem itemScript;
     protected override void Start()
     {
+        if(GameManager.instance.inventoryController.IsItemAlreadyInInventory(itemScript.evidence))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         itemScript = GetComponent<InventoryItem>();
         base.Start();
         itemScript.enabled = false;
     }
     public override void Interact()
     {
-        if(GameManager.instance.inventoryController.isActivated) return;
+        InventoryController inventoryController = GameManager.instance.inventoryController;
+        if (inventoryController.isActivated) return;
+
         itemScript.enabled = true;
         gameObject.layer = LayerMask.NameToLayer("InventoryLayer");
-        GameManager.instance.inventoryController.AddItem(itemScript);
+        inventoryController.AddItem(itemScript);
         this.enabled = false;
     }
     public override void OnRaycastEnter()
