@@ -5523,6 +5523,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 125198e69a0e6df4a93fe79fde71f778, type: 3}
       insertIndex: -1
       addedObject: {fileID: 908036537}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 125198e69a0e6df4a93fe79fde71f778, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 908036538}
   m_SourcePrefab: {fileID: 100100000, guid: 125198e69a0e6df4a93fe79fde71f778, type: 3}
 --- !u!1 &908036534 stripped
 GameObject:
@@ -5577,6 +5580,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.3747222, y: 1.2347304, z: 1.4827483}
   m_Center: {x: 1.1873645, y: 0.11736502, z: -0.01003951}
+--- !u!114 &908036538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908036534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea53d78ab8d0af47bbbd20ad2c0e738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAtTimelineTrigger
+  maxDistance: 20
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  target: {fileID: 908036536}
+  objectsToActivate: []
+  lookDuration: 2
+  cooldown: 2
+  timeline: {fileID: 761120130}
+  playerCamera: {fileID: 0}
+  timeToActivateCamControl: 0.5
+  alreadyPlayedCutscene: 0
+  zoomFOV: 30
+  zoomSpeed: 2
 --- !u!1001 &918248255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10903,7 +10932,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2858726439978208547, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094001986602302031, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
+      propertyPath: m_text
+      value: "3. H\xE1 ind\xEDcios da participa\xE7\xE3o de mais alguma pessoa?"
       objectReference: {fileID: 0}
     - target: {fileID: 3463564677205234582, guid: 1a8e61c2062c6f84ea2c8d5b95c6fa78, type: 3}
       propertyPath: m_IsActive

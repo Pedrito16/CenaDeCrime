@@ -5,14 +5,13 @@ public class EvidenceCollector : Interactable
     [SerializeField] InventoryItem itemScript;
     protected override void Start()
     {
+        base.Start();
         if(GameManager.instance.inventoryController.IsItemAlreadyInInventory(itemScript.evidence))
         {
             Destroy(gameObject);
             return;
         }
 
-        itemScript = GetComponent<InventoryItem>();
-        base.Start();
         itemScript.enabled = false;
     }
     public override void Interact()
