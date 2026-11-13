@@ -27,6 +27,7 @@ public class NPC : Interactable
     {
         base.Start();
         dialogueController = gameManager.dialogueController;
+        dialogueIndex = 0;
     }
     public override void Interact()
     {
@@ -42,19 +43,33 @@ public class NPC : Interactable
         string[] currentLines = currentDialogue.lines;
         if (currentLineIndex < currentLines.Length)
         {
-            dialogueController.WriteDialogue(currentLines[currentLineIndex], currentDialogue.npcName);
+            dialogueController.WriteDialogue(currentLines[currentLineIndex], currentDialogue.npcName, () => { currentLineIndex++; });
             if(!dialogueController.isOnDialogue)
                 currentLineIndex++;
         }
         else
+        {
             EndDialogue();
+            dialogues[dialogueIndex - 1].onLinesEnd?.Invoke();
+            print("onLinesEnd");
+        }
     }
     void EndDialogue()
     {
+        if(dialogueIndex < dialogues.Length)
+        {
+            dialogueIndex++;
+            currentLineIndex = 0;
+        }
 
         if (loopDialogueOnEnd && dialogueIndex >= dialogues.Length) //para loopar dialogo
             dialogueIndex = 0;
 
+        if(dialogueIndex >= dialogues.Length)
+        CloseDialogue();
+    }
+    void CloseDialogue()
+    {
         dialogueController.SetActive(false);
         currentLineIndex = 0;
         isOnDialogue = false;
@@ -62,12 +77,16 @@ public class NPC : Interactable
     #region OnRaycast
     public override void OnRaycastEnter()
     {
+        if(!enabled) return;
+
         base.OnRaycastEnter();
     }
     public override void OnRaycastExit()
     {
+        if (!enabled) return;
+
         base.OnRaycastExit();
-        EndDialogue();
+        CloseDialogue();
     }
     #endregion
 }

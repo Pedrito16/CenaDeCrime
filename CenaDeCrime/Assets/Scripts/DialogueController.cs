@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System;
 public class DialogueController : MonoBehaviour
 {
     [Header("Texts")]
@@ -18,6 +19,7 @@ public class DialogueController : MonoBehaviour
     public bool isOnDialogue;
     string lastText;
     Coroutine typeWritterRoutine;
+    Action onTypeWritterEnd;
 
     public static DialogueController instance;
     private void Awake()
@@ -39,11 +41,12 @@ public class DialogueController : MonoBehaviour
         SetActive(false);
         nextSelect.gameObject.SetActive(false);
     }
-    public void WriteDialogue(string text, string npcName = "")
+    public void WriteDialogue(string text, string npcName = "", Action onTypeWritterEnd = null)
     {
         nextSelect.gameObject.SetActive(false);
         dialogueText.text = "";
         npcNameText.text = npcName;
+        this.onTypeWritterEnd = onTypeWritterEnd;
 
         SetActive(true);
 
@@ -92,8 +95,14 @@ public class DialogueController : MonoBehaviour
             dialogueText.text += characters[i];
             yield return new WaitForSeconds(typeWritterSpeed);
         }
+        EndTypeWritter();
+    }
+    void EndTypeWritter()
+    {
         nextSelect.gameObject.SetActive(true);
         isOnDialogue = false;
         typeWritterRoutine = null;
+        onTypeWritterEnd?.Invoke();
+        onTypeWritterEnd = null;
     }
 }
