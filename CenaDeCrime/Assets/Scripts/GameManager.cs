@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public InventoryController inventoryController;
     public InteractRaycast interactRaycast;
     public InterrogationController interrogationController;
+    public CheckBoxVerifier checkBoxVerifier;
     public static GameManager instance;
 
 
@@ -29,6 +30,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         print("player movement na cena: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + " = " + playerMovement);
+    }
+    public void AutoDestroy()
+    {
+        instance = null;
+        Destroy(gameObject);
     }
     public bool IsInventoryOpen()
     {
