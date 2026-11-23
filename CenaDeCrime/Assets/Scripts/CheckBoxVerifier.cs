@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class CheckBoxVerifier : MonoBehaviour
 {
     [SerializeField] CheckBoxChecker[] checkBoxCheckers;
+    [SerializeField] TextMeshProUGUI buttonText;
     [SerializeField] Button interrogatoryButton;
     [SerializeField] string sceneToLoad;
+    Color originalTextColor;
     public static CheckBoxVerifier instance;
     void Awake()
     {
@@ -21,6 +24,11 @@ public class CheckBoxVerifier : MonoBehaviour
 
         GameManager.instance.checkBoxVerifier = this;
     }
+    private void Start()
+    {
+        originalTextColor = buttonText.color;
+        DidntAnsweredAll();
+    }
     public void CheckIfAnsweredAll()
     {
         for(int i = 0; i < checkBoxCheckers.Length; i++)
@@ -30,9 +38,12 @@ public class CheckBoxVerifier : MonoBehaviour
             else
             {
                 DidntAnsweredAll();
+                print("nao respondeu todas");
                 return;      
             }
         }
+        print("respondeu todas");
+        buttonText.color = originalTextColor;
         interrogatoryButton.interactable = true;
     }
     public void OnComplete()
@@ -43,5 +54,6 @@ public class CheckBoxVerifier : MonoBehaviour
     void DidntAnsweredAll()
     {
         interrogatoryButton.interactable = false;
+        buttonText.color = Color.gray;
     }
 }

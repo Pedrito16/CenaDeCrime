@@ -34,6 +34,12 @@ public class GameManager : MonoBehaviour
     public void AutoDestroy()
     {
         instance = null;
+        var objects = gameObject.scene.GetRootGameObjects();
+        foreach (GameObject obj in objects)
+        {
+            if (obj != gameObject)
+                Destroy(obj);
+        }
         Destroy(gameObject);
     }
     public bool IsInventoryOpen()

@@ -14,11 +14,14 @@ public class CheckBox : MonoBehaviour, IPointerClickHandler
     public bool isChecked = false;
     void Start()
     {
-        
+        GameManager gameManager = GameManager.instance;
+        if (gameManager.checkBoxVerifier != null)
+            onChecked.AddListener(() => gameManager.checkBoxVerifier.CheckIfAnsweredAll());
     }
     public void OnPointerClick(PointerEventData eventData)
     {
         isChecked = !isChecked;
+        onChecked?.Invoke();
         boxImage.sprite = isChecked ? checkedBox : emptyBox;
     }
 }

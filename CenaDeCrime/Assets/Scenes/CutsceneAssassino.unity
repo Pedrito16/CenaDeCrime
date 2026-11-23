@@ -129796,7 +129796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6ca552fe7556948b2eddd341dfd2b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreditosSubindo
-  velocidade: 50
+  velocidade: 70
   posicaoInicialY: -300
   posicaoFinalY: 1100
 --- !u!1001 &2087278102

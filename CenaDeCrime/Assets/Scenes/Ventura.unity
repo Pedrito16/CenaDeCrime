@@ -513,6 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb078b74bb335e45b2e1c4d23ac2d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckBoxChecker
+  isChecked: 0
   checkBoxes:
   - {fileID: 377283083}
   - {fileID: 438597372}
@@ -2193,6 +2194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb078b74bb335e45b2e1c4d23ac2d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckBoxChecker
+  isChecked: 0
   checkBoxes:
   - {fileID: 79679923}
   - {fileID: 1196877349}
@@ -3145,6 +3147,7 @@ MonoBehaviour:
   - {fileID: 806897699}
   - {fileID: 1617726117}
   - {fileID: 1525166145}
+  buttonText: {fileID: 888834796}
   interrogatoryButton: {fileID: 1331862902}
   sceneToLoad: Interrogatorio
 --- !u!1 &521581592
@@ -5340,6 +5343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb078b74bb335e45b2e1c4d23ac2d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckBoxChecker
+  isChecked: 0
   checkBoxes:
   - {fileID: 1259605504}
   - {fileID: 655795412}
@@ -8441,9 +8445,9 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.23584908, g: 0, b: 0.026856732, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -8461,7 +8465,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1331862903}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 512308470}
+        m_TargetAssemblyTypeName: CheckBoxVerifier, Assembly-CSharp
+        m_MethodName: OnComplete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1331862903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10042,6 +10058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb078b74bb335e45b2e1c4d23ac2d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckBoxChecker
+  isChecked: 0
   checkBoxes:
   - {fileID: 1519674467}
   - {fileID: 101200187}
@@ -10632,6 +10649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb078b74bb335e45b2e1c4d23ac2d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckBoxChecker
+  isChecked: 0
   checkBoxes:
   - {fileID: 105438874}
   - {fileID: 1137087802}

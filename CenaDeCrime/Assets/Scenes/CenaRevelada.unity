@@ -806,58 +806,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bb084d87a7a03e46bcafc690298a7d3, type: 3}
---- !u!1 &183312255
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 183312256}
-  - component: {fileID: 183312257}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &183312256
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183312255}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.78326, y: 0.1627, z: 41.18495}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &183312257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183312255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de655ab55e89447469b919c40ba695fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  horizontalInventory: {fileID: 0}
-  playerMovement: {fileID: 0}
-  dialogueController: {fileID: 0}
-  interactUI: {fileID: 0}
-  clipboardItem: {fileID: 0}
-  inventoryController: {fileID: 0}
-  interactRaycast: {fileID: 0}
-  interrogationController: {fileID: 0}
 --- !u!1001 &185290559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5095,7 +5043,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1201768681
+--- !u!1 &1223967080
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5103,9 +5051,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1201768682}
-  - component: {fileID: 1201768683}
-  - component: {fileID: 1201768684}
+  - component: {fileID: 1223967082}
+  - component: {fileID: 1223967081}
+  - component: {fileID: 1223967083}
   m_Layer: 0
   m_Name: PassScene
   m_TagString: Untagged
@@ -5113,28 +5061,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1201768682
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201768681}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.10503, y: 0, z: 0.45483}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1201768683
+--- !u!114 &1223967081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201768681}
+  m_GameObject: {fileID: 1223967080}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88d40763516ddd846aaf61ec71868715, type: 3}
@@ -5142,15 +5075,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PassScene
   sceneIndex: 0
   scenes: []
-  sceneName: Ventura
+  sceneName: CutsceneHomem
   useArray: 0
---- !u!114 &1201768684
+--- !u!4 &1223967082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223967080}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 105.76781, y: 0, z: -117.06104}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1223967083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201768681}
+  m_GameObject: {fileID: 1223967080}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
@@ -5162,7 +5110,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1201768683}
+        - m_Target: {fileID: 1223967081}
           m_TargetAssemblyTypeName: PassScene, Assembly-CSharp
           m_MethodName: ChangeScene
           m_Mode: 1
@@ -7849,6 +7797,8 @@ PlayableDirector:
     value: {fileID: 1998986349}
   - key: {fileID: 9210195622722822321, guid: 8244c456ad86d2648b549f8ceffb5948, type: 2}
     value: {fileID: 2031524465}
+  - key: {fileID: -2393175678810581897, guid: 8244c456ad86d2648b549f8ceffb5948, type: 2}
+    value: {fileID: 1223967083}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1916269240
@@ -7958,6 +7908,7 @@ GameObject:
   - component: {fileID: 1935688755}
   - component: {fileID: 1935688754}
   - component: {fileID: 1935688753}
+  - component: {fileID: 1935688759}
   m_Layer: 0
   m_Name: Camera_4
   m_TagString: Untagged
@@ -8139,6 +8090,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -4, y: 0, z: 6}
+--- !u!114 &1935688759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935688752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalReceiver
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: c37c9ca6955307945ad0f24ee06ca083, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1223967081}
+          m_TargetAssemblyTypeName: PassScene, Assembly-CSharp
+          m_MethodName: ChangeScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1937436342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9977,12 +9958,10 @@ SceneRoots:
   - {fileID: 1935440613}
   - {fileID: 1742012668}
   - {fileID: 422595624}
-  - {fileID: 183312256}
   - {fileID: 1112561843}
   - {fileID: 1877124500}
   - {fileID: 86694142}
   - {fileID: 992134997}
-  - {fileID: 1201768682}
   - {fileID: 1916269240}
   - {fileID: 1182353031}
   - {fileID: 590344709}
@@ -10001,3 +9980,4 @@ SceneRoots:
   - {fileID: 1185417551}
   - {fileID: 857834686}
   - {fileID: 1293107870}
+  - {fileID: 1223967082}
