@@ -4555,7 +4555,7 @@ MonoBehaviour:
     onLinesEnd:
       m_PersistentCalls:
         m_Calls: []
-  loopDialogueOnEnd: 0
+  loopDialogueOnEnd: 1
   dialogueIndex: 0
   currentLineIndex: 0
   isOnDialogue: 0
@@ -6486,7 +6486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea53d78ab8d0af47bbbd20ad2c0e738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LookAtTimelineTrigger
-  maxDistance: 20
+  maxDistance: 25
   targetLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -8803,7 +8803,7 @@ MonoBehaviour:
     onLinesEnd:
       m_PersistentCalls:
         m_Calls: []
-  loopDialogueOnEnd: 0
+  loopDialogueOnEnd: 1
   dialogueIndex: 0
   currentLineIndex: 0
   isOnDialogue: 0
@@ -14601,7 +14601,7 @@ MonoBehaviour:
     onLinesEnd:
       m_PersistentCalls:
         m_Calls: []
-  loopDialogueOnEnd: 0
+  loopDialogueOnEnd: 1
   dialogueIndex: 0
   currentLineIndex: 0
   isOnDialogue: 0
@@ -14618,7 +14618,7 @@ GameObject:
   - component: {fileID: 919132149403004832}
   - component: {fileID: 919132149403004831}
   m_Layer: 10
-  m_Name: polizial
+  m_Name: Azevedo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14653,7 +14653,7 @@ MonoBehaviour:
     onLinesEnd:
       m_PersistentCalls:
         m_Calls: []
-  loopDialogueOnEnd: 0
+  loopDialogueOnEnd: 1
   dialogueIndex: 0
   currentLineIndex: 0
   isOnDialogue: 0

@@ -1994,7 +1994,7 @@ GameObject:
   - component: {fileID: 255654719}
   - component: {fileID: 255654718}
   - component: {fileID: 255654717}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube.002_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10058,7 +10058,7 @@ GameObject:
   - component: {fileID: 836206306}
   - component: {fileID: 836206305}
   - component: {fileID: 836206304}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10514,7 +10514,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 954620704}
-  m_Layer: 0
+  - component: {fileID: 954620707}
+  - component: {fileID: 954620706}
+  - component: {fileID: 954620705}
+  m_Layer: 10
   m_Name: RoupasHomem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10540,6 +10543,58 @@ Transform:
   - {fileID: 255654719}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &954620705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954620703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1790b0221f95a4184d4dc29acc9b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryItem
+  evidence: {fileID: 11400000, guid: 759206815b0678a4cb0ffd30d8f889dc, type: 2}
+--- !u!114 &954620706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954620703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1afeff7c8bf2c03459e4a82a59dac122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EvidenceCollector
+  interactMessage: Pressione <color=blue>E</color> para interagir
+  useOutlineInChildrens: 0
+  highOutline: 0
+  outlineRenderers: []
+  gameManager: {fileID: 0}
+  itemScript: {fileID: 954620705}
+--- !u!65 &954620707
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954620703}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.28, y: 0.12, z: 1.44}
+  m_Center: {x: 0.33, y: 0, z: 0}
 --- !u!1001 &975411028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12218,7 +12273,7 @@ GameObject:
   - component: {fileID: 1184559807}
   - component: {fileID: 1184559806}
   - component: {fileID: 1184559805}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18584,14 +18639,14 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogues:
   - dialogueName: Assassino
-    npcName: Assassino
+    npcName: Assassino de aluguel
     lines:
     - "Al\xF4?? \xC9 a valentina?"
     onLinesEnd:
       m_PersistentCalls:
         m_Calls: []
   - dialogueName: "Detetive Alu\xEDsio"
-    npcName: "Detetive Alu\xEDsio"
+    npcName: Detetive Michael
     lines:
     - "Por acaso voc\xEA \xE9 um assassino? Voc\xEA teria alguma rela\xE7\xE3o com
       o crime da Rua Azevedo?"
@@ -18599,22 +18654,22 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - dialogueName: Assassino
-    npcName: Assassino
+    npcName: Assassino de aluguel
     lines:
     - "Ai meu parceiro quem \xE9 tu?? eu n\xE3o to envolvido com nada n\xE3o."
     onLinesEnd:
       m_PersistentCalls:
         m_Calls: []
   - dialogueName: "Alu\xEDsio"
-    npcName: "Detetive Alu\xEDsio"
+    npcName: Detetive Michael
     lines:
-    - "Sou o detetive Alu\xEDsio, e caso voc\xEA n\xE3o saiba estou gravando a chamada,
-      e logo logo iremos saber onde voc\xEA est\xE1"
+    - "Sou o detetive Michael, voc\xEA n\xE3o saiba estou gravando a chamada, e logo
+      logo iremos saber onde voc\xEA est\xE1"
     onLinesEnd:
       m_PersistentCalls:
         m_Calls: []
   - dialogueName: "Detetive Alu\xEDsio"
-    npcName: "Detetive Alu\xEDsio"
+    npcName: Detetive Michael
     lines:
     - "Ent\xE3o fa\xE7a o favor e come\xE7e a falar a sua rela\xE7\xE3o com os envolvidos,
       Valentina e seu marido."
@@ -18622,7 +18677,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - dialogueName: Assassino
-    npcName: Assassino
+    npcName: Assassino de aluguel
     lines:
     - "Eu n\xE3o estou envolvido com nenhum caso da rua Azevedo, a Valentina encontrou
       meu n\xFAmero na dark web.\n"
@@ -18630,7 +18685,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - dialogueName: Assassino
-    npcName: Assassino
+    npcName: Assassino de aluguel
     lines:
     - Ela pediu para que eu protegesse ela, ela teme que seu marido pode tramar algo
       contra ela.
@@ -18638,14 +18693,14 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - dialogueName: Assassino
-    npcName: Assassino
+    npcName: Assassino de aluguel
     lines:
     - "\xC9 apenas isso que sei..."
     onLinesEnd:
       m_PersistentCalls:
         m_Calls: []
   - dialogueName: "Detetive Alu\xEDsio"
-    npcName: "Detetive Alu\xEDsio"
+    npcName: Detetive Michael
     lines:
     - "Entendi... do mesmo jeito, voc\xEA ter\xE1 que vir conosco, estamos tentando
       desvendar um caso, n\xE3o tente fugir..."
@@ -20283,7 +20338,7 @@ GameObject:
   - component: {fileID: 4083501150440573518}
   - component: {fileID: 3260616447475132515}
   - component: {fileID: 7762067043246846450}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 [System.Serializable]
 public class Suspect
 {
+    public string suspectName;
     public GameObject lightSource;
     public Transform frontFaceCam;
     public string whatWillSay;
@@ -19,6 +20,7 @@ public class InterrogationController : MonoBehaviour
     [SerializeField] public Suspect[] suspects;
     [SerializeField] Transform mainCameraTransform;
     [SerializeField] TMP_Text text;
+    [SerializeField] TMP_Text suspectNameText;
     [SerializeField] PassScene passSceneScript;
 
     [Header("Config")]
@@ -70,13 +72,13 @@ public class InterrogationController : MonoBehaviour
         passSceneScript.sceneIndex = currentSuspectIndex;
         onConfirmSuspect?.Invoke();
     }
-    IEnumerator TypeWritter(string textToWrite)
+    IEnumerator TypeWritter(string textToWrite, TMP_Text textToTypeWrite)
     {
-        text.gameObject.SetActive(true);
+        textToTypeWrite.gameObject.SetActive(true);
         char[] chars = textToWrite.ToCharArray();
         for(int i = 0;i < chars.Length; i++)
         {
-            text.text += chars[i];
+            textToTypeWrite.text += chars[i];
             yield return new WaitForSeconds(typeWritterSpeed);
         }
     }
@@ -87,7 +89,8 @@ public class InterrogationController : MonoBehaviour
 
         Suspect currentSuspect = suspects[currentSuspectIndex];
         isSelecting = true;
-        typeWritterCoroutine = StartCoroutine(TypeWritter(currentSuspect.whatWillSay));
+        typeWritterCoroutine = StartCoroutine(TypeWritter(currentSuspect.whatWillSay, text));
+        StartCoroutine(TypeWritter(currentSuspect.suspectName, suspectNameText));
 
         canChangeSelected = false;
         isAnimationComplete = false;
@@ -108,8 +111,12 @@ public class InterrogationController : MonoBehaviour
         Suspect currentSuspect = suspects[currentSuspectIndex];
         StopCoroutine(typeWritterCoroutine);
         text.gameObject.SetActive(false);
+        suspectNameText.gameObject.SetActive(false);
+
         isSelecting = false;
+
         text.text = "";
+        suspectNameText.text = "";
 
         isAnimationComplete = false;
         SwitchCams(false);

@@ -81,7 +81,6 @@ public class LookAtTimelineTrigger : MonoBehaviour
         );
 
         RaycastHit hit;
-
         if (Physics.Raycast(
             ray,
             out hit,
@@ -99,6 +98,8 @@ public class LookAtTimelineTrigger : MonoBehaviour
                 return;
             }
         }
+        print(hit.transform.IsChildOf(target));
+
 
         // Parou de olhar para o objeto
         lookTimer = 0f;
